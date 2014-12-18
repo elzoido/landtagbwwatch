@@ -23,6 +23,14 @@ my $basesearch = $baseurl . 'cms/render/live/de/sites/LTBW/home/dokumente/die-in
 
 my $year = localtime->strftime('%Y');
 my $month = localtime->strftime('%m');
+my ($lastyear, $lastmonth);
+if ($month == 1) {
+	$lastyear = $year - 1;
+	$lastmonth = 12;
+} else {
+	$lastyear = $year;
+	$lastmonth = $month - 1;
+}
 
 my $content = get($basesearch.'?searchYear='.$year.'&searchMonth='.$month);
 
@@ -42,7 +50,7 @@ my $drucksachen;
 
 print "drucksache,datum,link,titel\n";
 
-for my $item (@{$ds->{drucksachen}}) {
+for my $item (sort sortDate @{$ds->{drucksachen}}) {
 	my $drucksache_id;
 	my $date;
 	my $link;
@@ -54,3 +62,26 @@ for my $item (@{$ds->{drucksachen}}) {
 	print $drucksache_id.",".$date.",\"".$link."\",\"".$title."\"\n";
 }
 
+$content = get($basesearch.'?searchYear='.$lastyear.'&searchMonth='.$lastmonth);
+
+$ds = $scraper->scrape($content);
+for my $item (sort sortDate @{$ds->{drucksachen}}) {
+	my $drucksache_id;
+	my $date;
+	my $link;
+	my $title;
+	($drucksache_id, $date) = (encode('UTF-8',$item->{meta}) =~ /(\d+\/\d+).*(\d\d\.\d\d\.\d\d\d\d)/);
+	$link = $baseurl . $item->{link};
+	$title = encode('UTF-8', $item->{title});
+	1;
+	print $drucksache_id.",".$date.",\"".$link."\",\"".$title."\"\n";
+}
+
+sub sortDate {
+	my ($a_d, $a_m, $a_y) = ($a->{meta} =~ /(\d\d)\.(\d\d)\.(\d\d\d\d)/);
+	my ($b_d, $b_m, $b_y) = ($b->{meta} =~ /(\d\d)\.(\d\d)\.(\d\d\d\d)/);
+	return $b_y <=> $a_y
+		|| $b_m <=> $a_m
+		|| $b_d <=> $a_d;
+	
+}
