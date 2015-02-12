@@ -119,10 +119,12 @@ for my $item (sort sortMetaDate @{$ds->{drucksachen}}) {
 			$add_data = 1;
 		}
 	} elsif (!$urheberFilter and $artFilter) {
+		#FIXME: Won't work right now ($artFilter = antrag|kleine_anfrage|grosse_anfrage)
 		if ($art =~ /$artFilter/i) {
 			$add_data = 1;
 		}
 	} elsif ($urheberFilter and $artFilter) {
+		#FIXME: Won't work right now ($artFilter = antrag|kleine_anfrage|grosse_anfrage)
 		if ($urheber =~ /$urheberFilter/ and
 			$art =~ /$artFilter/i) {
 				
