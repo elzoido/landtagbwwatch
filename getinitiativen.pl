@@ -17,6 +17,9 @@ use CGI qw/:standard/;
 #   searchMonth (M/MM) default: current month
 #   outputFormat (json,prettyjson,csv) default: prettyjson
 
+#   urheber (string) default: ''
+#   art (antrag, kleine_anfrage, grosse_anfrage) default: ''
+
 my $cgi = new CGI;
 
 my $outputFormat = $cgi->param('outputFormat');
@@ -46,9 +49,20 @@ if ($searchMonth !~ /^\d\d?$/) {
 	$searchMonth = '0' . $searchMonth if (length($searchMonth) == 1);
 }
 
+my $urheberFilter = $cgi->param('urheber');
+$urheberFilter = '' unless ($urheberFilter);
+# sanitize input
+$urheberFilter = lc(scalar($urheberFilter));
+
+my $artFilter = $cgi->param('art');
+$artFilter = '' unless ($artFilter);
+# sanitize input
+$artFilter = lc(scalar($artFilter));
+$artFilter = '' if ($artFilter ne 'antrag' and $artFilter ne 'kleine_anfrage' and $artFilter ne 'grosse_anfrage');
+
 my $baseurl = 'http://www.landtag-bw.de';
 
-my $basesearch = $baseurl . '/cms/render/live/de/sites/LTBW/home/dokumente/die-initiativen/drucksachen/contentBoxes/suche-drucksachen.html';
+my $basesearch = $baseurl . '/cms/render/live/de/sites/LTBW/home/dokumente/die-initiativen/gesamtverzeichnis/contentBoxes/suche-initiative.html';
 
 # Parameters for Interface:
 #   searchYear (YYYY)
@@ -85,13 +99,46 @@ for my $item (sort sortMetaDate @{$ds->{drucksachen}}) {
 	my $drucksache_id;
 	my $date;
 	my $link;
+	my $art;
+	my $urheber;
 	my $title;
-	($drucksache_id, $date) = (encode('UTF-8',$item->{meta}) =~ /(\d+\/\d+).*(\d\d\.\d\d\.\d\d\d\d)/);
+	# get rid of '&nbsp;'
+	$item->{meta} =~ s/\s/ /g;
+	
+	($drucksache_id, $date, $art, $urheber) = (encode('UTF-8',$item->{meta}) =~ /(\d+\/\d+).*(\d\d\.\d\d\.\d\d\d\d)\s+-\s+Art:\s+(.*?)\s+-\s+Urheber:\s+(.*)/);
+	# remove trailing whitespace
+	$urheber =~ s/\s*$//;
+	
 	$link = $baseurl . (substr($item->{link},0,1) eq '/' ? '' : '/') . $item->{link};
 	$title = encode('UTF-8', $item->{title});
-	$items->{$drucksache_id} = {date => $date,
-								link => $link,
-								title => $title};
+	
+	my $add_data = 0;
+	
+	if ($urheberFilter and !$artFilter) {
+		if ($urheber =~ /$urheberFilter/i) {
+			$add_data = 1;
+		}
+	} elsif (!$urheberFilter and $artFilter) {
+		if ($art =~ /$artFilter/i) {
+			$add_data = 1;
+		}
+	} elsif ($urheberFilter and $artFilter) {
+		if ($urheber =~ /$urheberFilter/ and
+			$art =~ /$artFilter/i) {
+				
+			$add_data = 1;
+		}
+	} elsif (!$urheberFilter and !$artFilter) {
+		$add_data = 1;
+	}
+	
+	if ($add_data) {
+		$items->{$drucksache_id} = {date => $date,
+									link => $link,
+									title => $title,
+									art => $art,
+									urheber => $urheber};
+	}
 }
 
 if (lc($outputFormat) eq 'csv') {
