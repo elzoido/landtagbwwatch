@@ -64,5 +64,5 @@ my $sth = $dbh->prepare('INSERT INTO mdl (vorname, name, anrede, titel, partei, 
 
 for my $key (keys %$mdl) {
 	my $p = $mdl->{$key};
-	$sth->execute($p->{vorname}, $p->{nachname}, $p->{anrede}, $p->{titel}, $p->{partei}, $p->{wahlkreis}, $p->{aktiv});
+	$sth->execute($p->{vorname}, $p->{nachname}, $p->{anrede}, $p->{titel}, $p->{fraktion}, $p->{wahlkreis}, $p->{aktiv});
 }
