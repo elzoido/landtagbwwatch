@@ -65,9 +65,4 @@ my $sth = $dbh->prepare('INSERT INTO mdl (vorname, name, anrede, titel, partei, 
 for my $key (keys %$mdl) {
 	my $p = $mdl->{$key};
 	$sth->execute($p->{vorname}, $p->{nachname}, $p->{anrede}, $p->{titel}, $p->{partei}, $p->{wahlkreis}, $p->{aktiv});
-#	if (!$p->{wahlkreis}) {
-#		print "$key: $p->{vorname} $p->{nachname}\n";
-#	}
 }
-
-1;
