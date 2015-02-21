@@ -1,0 +1,73 @@
+CREATE TABLE IF NOT EXISTS drucksachen (
+	id INT NOT NULL AUTO_INCREMENT,
+	periode INT NOT NULL,
+	periode_id INT NOT NULL,
+	link VARCHAR(1024) NOT NULL,
+	datum DATE,
+	titel VARCHAR(1024),
+	PRIMARY KEY(id)
+);
+
+
+CREATE TABLE IF NOT EXISTS drucksachen_volltexte (
+	id INT NOT NULL AUTO_INCREMENT,
+	periode INT NOT NULL,
+	periode_id INT NOT NULL,
+	pdf BLOB,
+	text TEXT,
+	geholt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS initiativen (
+	id INT NOT NULL AUTO_INCREMENT,
+	periode INT NOT NULL,
+	periode_id INT NOT NULL,
+	urheber_partei VARCHAR(15) NOT NULL,
+	datum DATE,
+	art ENUM('kleine_anfrage', 'grosse_anfrage', 'antrag'),
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS initiativen_volltexte (
+	id INT NOT NULL AUTO_INCREMENT,
+	periode INT NOT NULL,
+	periode_id INT NOT NULL,
+	pdf BLOB,
+	text TEXT,
+	geholt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS mdl (
+	id INT NOT NULL AUTO_INCREMENT,
+	vorname VARCHAR(255) NOT NULL,
+	name VARCHAR(255) NOT NULL,
+	anrede VARCHAR(5),
+	titel VARCHAR(10),
+	partei VARCHAR(15),
+	wahlkreis INT NOT NULL,
+	aktiv BOOL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS mdl_initiativen (
+	id INT NOT NULL AUTO_INCREMENT,
+	mdb_id INT NOT NULL,
+	initiativen_id INT NOT NULL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS kategorien (
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(255) NOT NULL,
+	PRIMARY KEY(id)
+);
+
+CREATE TABLE IF NOT EXISTS dokumente_kategorien (
+	id INT NOT NULL AUTO_INCREMENT,
+	periode INT NOT NULL,
+	periode_id INT NOT NULL,
+	kategorien_id INT NOT NULL,
+	PRIMARY KEY(id)
+);

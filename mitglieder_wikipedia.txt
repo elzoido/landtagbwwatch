@@ -1,0 +1,298 @@
+== Abgeordnete ==
+{| class="wikitable sortable"
+|-
+! Name!! Fraktion!! Wahlkreis!! Mandat!! Anteil!! Anmerkung
+|-
+| {{SortKeyName|Katrin|Altpeter}} || SPD || [[Landtagswahlkreis Waiblingen|15 Waiblingen]] || Zweitmandat || 24,2 % ||
+| {{SortKeyName|Hans Heribert|Blättgen}} || SPD || [[Landtagswahlkreis Eppingen|19 Eppingen]] || Zweitmandat || 24,2 % ||
+|-
+| {{SortKeyName|Muhterem|Aras}} || Grüne || [[Landtagswahlkreis Stuttgart I|01 Stuttgart I]] || Erstmandat || 42,5 % ||
+|-
+| {{SortKeyName|Theresia|Bauer}} || Grüne || [[Landtagswahlkreis Heidelberg|34 Heidelberg]] || Erstmandat || 36,7 % ||
+|-
+| {{SortKeyName|Christoph|Bayer}} || SPD || [[Landtagswahlkreis Breisgau|48 Breisgau]] || Zweitmandat || 24,0 % ||
+|-
+| {{SortKeyName|Norbert|Beck}} || CDU || [[Landtagswahlkreis Freudenstadt|45 Freudenstadt]] || Erstmandat || 45,8 % ||
+|-
+| {{SortKeyName|Sascha|Binder}} || SPD || [[Landtagswahlkreis Geislingen|11 Geislingen]] || Zweitmandat || 24,2 % ||
+|-
+| {{SortKeyName|Dietrich|Birk}} || CDU || [[Landtagswahlkreis Göppingen|10 Göppingen]] || Erstmandat || 38,0 % || ausgeschieden am 31. Dezember 2013
+|-
+| {{SortKeyName|Thomas|Blenke}} || CDU || [[Landtagswahlkreis Calw|43 Calw]] || Erstmandat || 44,0 % ||
+|-
+| {{SortKeyName|Beate|Böhlen}} || Grüne || [[Landtagswahlkreis Baden-Baden|33 Baden-Baden]] || Zweitmandat || 24,6 % ||
+|-
+| {{SortKeyName|Sandra|Boser}} || Grüne || [[Landtagswahlkreis Lahr|50 Lahr]] || Zweitmandat || 24,0 % ||
+|-
+| {{SortKeyName|Elke|Brunnemer}} || CDU || [[Landtagswahlkreis Sinsheim|41 Sinsheim]] || Erstmandat || 38,3 % ||
+|-
+| {{SortKeyName|Friedrich|Bullinger}} || FDP/DVP || [[Landtagswahlkreis Schwäbisch Hall|22 Schwäbisch Hall]] || Zweitmandat || {{SortKey|08,4 %}}{{0}}8,4 % ||
+|-
+| {{SortKeyName|Klaus|Burger}} || CDU || [[Landtagswahlkreis Sigmaringen|70 Sigmaringen]] || Nachrücker im Erstmandat || 50,2 % || nachgerückt am 3. Juli 2012 für Tanja Gönner
+|-
+| {{SortKeyName|Andreas|Deuschle}} || CDU || [[Landtagswahlkreis Esslingen|07 Esslingen]] || Erstmandat || 36,5 % ||
+|-
+| {{SortKeyName|Wolfgang|Drexler}} || SPD || [[Landtagswahlkreis Esslingen|07 Esslingen]] || Zweitmandat || 25,4 % ||Vizepräsident
+|-
+| {{SortKeyName|Marianne|Engeser}} || CDU || [[Landtagswahlkreis Pforzheim|42 Pforzheim]] || Nachrückerin im Erstmandat || 44,5 % || nachgerückt am 1. September 2011 für Stefan Mappus
+|-
+| {{SortKeyName|Konrad|Epple}} || CDU || [[Landtagswahlkreis Vaihingen|13 Vaihingen]] || Erstmandat || 38,8 % ||
+|-
+| {{SortKey|von Eyb, Arnulf|[[Arnulf Freiherr von Eyb]]}} || CDU || [[Landtagswahlkreis Hohenlohe|21 Hohenlohe]] || Erstmandat || 40,7 % ||
+|-
+| {{SortKey|Filius, Jürgen|[[Jürgen Filius]]}} || Grüne || [[Landtagswahlkreis Ulm|64 Ulm]] || Zweitmandat || 24,7 % ||
+|-
+| {{SortKeyName|Josef|Frey}} || Grüne || [[Landtagswahlkreis Lörrach|58 Lörrach]] || Zweitmandat || 28,0 % ||
+|-
+| {{SortKey|Fritz, Jörg|[[Jörg Fritz]]}} || Grüne || [[Landtagswahlkreis Göppingen|10 Göppingen]] || Zweitmandat || 22,0 % ||
+|-
+| {{SortKeyName|Stefan|Fulst-Blei}} || SPD || [[Landtagswahlkreis Mannheim I|35 Mannheim I]] || Erstmandat || 34,2 % ||
+|-
+| {{SortKeyName|Thomas|Funk}} || SPD || [[Landtagswahlkreis Sinsheim|41 Sinsheim]] || Zweitmandat || 25,3 % ||
+|-
+| {{SortKeyName|Reinhold|Gall}} || SPD || [[Landtagswahlkreis Neckarsulm|20 Neckarsulm]] || Zweitmandat || 25,9 % ||
+|-
+| {{SortKey|Glück, Andreas|[[Andreas Glück]]}} || FDP/DVP || [[Landtagswahlkreis Hechingen-Münsingen|61 Hechingen-Münsingen]] || Zweitmandat || {{SortKey|07,4 %}}{{0}}7,4 % ||
+|-
+| {{SortKeyName|Ulrich|Goll}} || FDP/DVP || [[Landtagswahlkreis Waiblingen|15 Waiblingen]] || Zweitmandat || {{SortKey|08,0 %}}{{0}}8,0 % ||
+|-
+| {{SortKey|Gönner, Tanja|[[Tanja Gönner]]}} || CDU || [[Landtagswahlkreis Sigmaringen|70 Sigmaringen]] || Erstmandat || 50,2 % || ausgeschieden am 30. Juni 2012
+|-
+| {{SortKeyName|Anneke|Graner}} || SPD || [[Landtagswahlkreis Ettlingen|31 Ettlingen]] || Nachrückerin im Zweitmandat || 25,1 % || nachgerückt am 16. März 2013 für Frank Mentrup
+|-
+| {{SortKeyName|Leopold|Grimm}} || FDP/DVP || [[Landtagswahlkreis Tuttlingen-Donaueschingen|55 Tuttlingen-Donaueschingen]] || Zweitmandat || {{SortKey|07,0 %}}{{0}}7,0 % || ausgeschieden am 31. Juli 2014
+|-
+| {{SortKeyName|Manfred|Groh}} || CDU || [[Landtagswahlkreis Karlsruhe I|27 Karlsruhe I]] || Erstmandat || 30,8 % || ausgeschieden am 30. September 2014
+|-
+| {{SortKeyName|Gernot|Gruber|Gernot Gruber (Politiker)}} || SPD || [[Landtagswahlkreis Backnang|17 Backnang]] || Zweitmandat || 23,8 % ||
+|-
+| {{SortKey|Grünstein, Rosa|[[Rosa Grünstein]]}} || SPD || [[Landtagswahlkreis Schwetzingen|40 Schwetzingen]] || Zweitmandat || 28,2 % ||
+|-
+| {{SortKeyName|Hidir|Gürakar}} || SPD || [[Landtagswahlkreis Waldshut|59 Waldshut]] || Nachrücker im Zweitmandat || 24,8 % || nachgerückt am 7. Januar 2014 für Alfred Winkler
+|-
+| {{SortKeyName|Friedlinde|Gurr-Hirsch}} || CDU || [[Landtagswahlkreis Eppingen|19 Eppingen]] || Erstmandat || 40,9 % ||
+|-
+| {{SortKey|Häffner, Petra|[[Petra Häffner]]}} || Grüne || [[Landtagswahlkreis Schorndorf|16 Schorndorf]] || Zweitmandat || 22,5 % ||
+|-
+| {{SortKeyName|Martin|Hahn|Martin Hahn (Politiker)}} || Grüne || [[Landtagswahlkreis Bodensee|67 Bodensee]] || Zweitmandat || 26,4 % ||
+|-
+| {{SortKeyName|Wilhelm|Halder}} || Grüne || [[Landtagswahlkreis Waiblingen|15 Waiblingen]] || Zweitmandat || 23,5 % ||
+|-
+| {{SortKeyName|Hans-Martin|Haller}} || SPD || [[Landtagswahlkreis Balingen|63 Balingen]] || Zweitmandat || 23,9 % ||
+|-
+| {{SortKeyName|Rita|Haller-Haid}} || SPD || [[Landtagswahlkreis Tübingen|62 Tübingen]] || Zweitmandat || 21,8 % ||
+|-
+| {{SortKeyName|Peter|Hauk}} || CDU || [[Landtagswahlkreis Neckar-Odenwald|38 Neckar-Odenwald]] || Erstmandat || 48,4 % ||
+|-
+| {{SortKeyName|Jochen|Haußmann}} || FDP/DVP || [[Landtagswahlkreis Schorndorf|16 Schorndorf]] || Zweitmandat || {{SortKey|08,4 %}}{{0}}8,4 % ||
+|-
+| {{SortKeyName|Helen|Heberer}} || SPD || [[Landtagswahlkreis Mannheim II|36 Mannheim II]] || Zweitmandat|| 27,9 % ||
+|-
+| {{SortKeyName|Walter|Heiler}} || SPD || [[Landtagswahlkreis Bruchsal|29 Bruchsal]] || Zweitmandat || 25,6 % ||
+|-
+| {{SortKeyName|Klaus|Herrmann}} || CDU || [[Landtagswahlkreis Ludwigsburg|12 Ludwigsburg]] || Erstmandat || 35,1 % ||
+|-
+| {{SortKeyName|Dieter|Hillebrand}} || CDU || [[Landtagswahlkreis Reutlingen|60 Reutlingen]] || Erstmandat || 36,3 % ||
+|-
+| {{SortKeyName|Rainer|Hinderer}} || SPD || [[Landtagswahlkreis Heilbronn|18 Heilbronn]] || Zweitmandat || 26,4 % ||
+|-
+| {{SortKeyName|Bernd|Hitzler}} || CDU || [[Landtagswahlkreis Heidenheim|24 Heidenheim]] || Erstmandat || 37,8 % ||
+|-
+| {{SortKeyName|Peter|Hofelich}} || SPD || [[Landtagswahlkreis Göppingen|10 Göppingen]] || Zweitmandat || 26,4 % ||
+|-
+| {{SortKeyName|Manfred|Hollenbach}} || CDU || [[Landtagswahlkreis Bietigheim-Bissingen|14 Bietigheim-Bissingen]] || Erstmandat || 38,2 % ||
+|-
+| {{SortKey|Jägel, Karl-Wolfgang|[[Karl-Wolfgang Jägel]]}} || CDU || [[Landtagswahlkreis Rastatt|32 Rastatt]] || Erstmandat || 38,2 % ||
+|-
+| {{SortKey|Käppeler, Klaus|[[Klaus Käppeler]]}} || SPD || [[Landtagswahlkreis Hechingen-Münsingen|61 Hechingen-Münsingen]] || Zweitmandat || 21,3 % ||
+|-
+| {{SortKeyName|Manfred|Kern|Manfred Kern (Politiker)}} || Grüne || [[Landtagswahlkreis Schwetzingen|40 Schwetzingen]] || Zweitmandat || 23,5 % ||
+|-
+| {{SortKeyName|Timm|Kern}} || FDP/DVP || [[Landtagswahlkreis Freudenstadt|45 Freudenstadt]] || Zweitmandat || {{SortKey|07,6 %}}{{0}}7,6 % ||
+|-
+| {{SortKeyName|Karl|Klein|Karl Klein (Politiker)}} || CDU || [[Landtagswahlkreis Wiesloch|37 Wiesloch]] || Erstmandat || 39,7 % ||
+|-
+| {{SortKey|Kleinböck, Gerhard|[[Gerhard Kleinböck]]}} || SPD || [[Landtagswahlkreis Weinheim|39 Weinheim]] || Zweitmandat || 25,5 % ||
+|-
+| {{SortKeyName|Wilfried|Klenk}} || CDU || [[Landtagswahlkreis Backnang|17 Backnang]] || Erstmandat || 40,8 % || Landtagspräsident seit Februar 2015
+|-
+| {{SortKey|Köberle, Rudolf|[[Rudolf Köberle]]}} || CDU || [[Landtagswahlkreis Ravensburg|69 Ravensburg]] || Erstmandat || 43,5 % ||
+|-
+| {{SortKeyName|Ernst|Kopp|Ernst Kopp (Politiker)}} || SPD || [[Landtagswahlkreis Rastatt|32 Rastatt]] || Zweitmandat || 29,9 % ||
+|-
+| {{SortKey|Kößler, Joachim|[[Joachim Kößler]]}} || CDU || [[Landtagswahlkreis Bretten|30 Bretten]] || Erstmandat || 40,4 % ||
+|-
+| {{SortKeyName|Winfried|Kretschmann}} || Grüne || [[Landtagswahlkreis Nürtingen|09 Nürtingen]] || Zweitmandat || 25,6 % || Ministerpräsident
+|-
+| {{SortKey|Kunzmann, Thaddäus|[[Thaddäus Kunzmann]]}} || CDU || [[Landtagswahlkreis Nürtingen|09 Nürtingen]] || Erstmandat || 39,7 % ||
+|-
+| {{SortKeyName|Sabine|Kurtz}} || CDU || [[Landtagswahlkreis Leonberg|06 Leonberg]] || Erstmandat || 39,1 % ||
+|-
+| {{SortKeyName|Bernhard|Lasotta}} || CDU || [[Landtagswahlkreis Neckarsulm|20 Neckarsulm]] || Erstmandat || 40,7 % ||
+|-
+| {{SortKeyName|Daniel Andreas|Lede Abal}} || Grüne || [[Landtagswahlkreis Tübingen|62 Tübingen]] || Erstmandat || 32,1 % ||
+|-
+| {{SortKeyName|Siegfried|Lehmann}} || Grüne || [[Landtagswahlkreis Konstanz|56 Konstanz]] || Erstmandat || 34,7 % ||
+|-
+| {{SortKeyName|Andrea|Lindlohr}} || Grüne || [[Landtagswahlkreis Esslingen|07 Esslingen]] || Zweitmandat || 26,7 % ||
+|-
+| {{SortKeyName|Paul|Locherer}} || CDU || [[Landtagswahlkreis Wangen|68 Wangen]] || Erstmandat || 48,6 % ||
+|-
+| {{SortKey|Löffler, Reinhard|[[Reinhard Löffler]]}} || CDU || [[Landtagswahlkreis Stuttgart III|03 Stuttgart III]] || Erstmandat || 34,2 % ||
+|-
+| {{SortKey|Lösch, Brigitte|[[Brigitte Lösch]]}} || Grüne || [[Landtagswahlkreis Stuttgart IV|04 Stuttgart IV]] || Erstmandat || 32,3 % ||Vizepräsidentin
+|-
+| {{SortKeyName|Manfred|Lucha}} || Grüne || [[Landtagswahlkreis Ravensburg|69 Ravensburg]] || Zweitmandat || 26,1 % ||
+|-
+| {{SortKeyName|Ulrich|Lusche}} || CDU || [[Landtagswahlkreis Lörrach|58 Lörrach]] || Erstmandat || 31,8 % ||
+|-
+| {{SortKeyName|Winfried|Mack}} || CDU || [[Landtagswahlkreis Aalen|26 Aalen]] || Erstmandat || 46,4 % ||
+|-
+| {{SortKeyName|Klaus|Maier|Klaus Maier (Politiker)}} || SPD || [[Landtagswahlkreis Schwäbisch Gmünd|25 Schwäbisch Gmünd]] || Zweitmandat || 24,4 % ||
+|-
+| {{SortKeyName|Stefan|Mappus}} || CDU || [[Landtagswahlkreis Pforzheim|42 Pforzheim]] || Erstmandat || 44,5 % || ausgeschieden am 31. August 2011
+|-
+| {{SortKeyName|Thomas|Marwein}} || Grüne || [[Landtagswahlkreis Offenburg|51 Offenburg]] || Zweitmandat || 26,5 % ||
+|-
+| {{SortKeyName|Bettina|Meier-Augenstein}} || CDU || [[Landtagswahlkreis Karlsruhe I|27 Karlsruhe I]] || Nachrückerin im Erstmandat || 30,8 % || nachgerückt am 1. Oktober 2014 für Manfred Groh
+|-
+| {{SortKeyName|Frank|Mentrup}} || SPD || [[Landtagswahlkreis Ettlingen|31 Ettlingen]] || Zweitmandat || 25,1 % || ausgeschieden am 15. März 2013
+|-
+| {{SortKey|Mielich, Bärbl|[[Bärbl Mielich]]}} || Grüne || [[Landtagswahlkreis Breisgau|48 Breisgau]] || Zweitmandat || 30,2 % ||
+|-
+| {{SortKey|Müller, Ulrich|[[Ulrich Müller (Politiker)|Ulrich Müller]]}} || CDU || [[Landtagswahlkreis Bodensee|67 Bodensee]] || Erstmandat || 38,1 % ||
+|-
+| {{SortKeyName|Bernd|Murschel}} || Grüne || [[Landtagswahlkreis Leonberg|06 Leonberg]] || Zweitmandat || 24,5 % ||
+|-
+| {{SortKeyName|Georg|Nelius}} || SPD || [[Landtagswahlkreis Neckar-Odenwald|38 Neckar-Odenwald]] || Zweitmandat || 25,9 % ||
+|-
+| {{SortKeyName|Paul|Nemeth}} || CDU || [[Landtagswahlkreis Böblingen|05 Böblingen]] || Erstmandat || 41,1 % ||
+|-
+| {{SortKeyName|Claus|Paal}} || CDU || [[Landtagswahlkreis Schorndorf|16 Schorndorf]] || Erstmandat || 39,2 % ||
+|-
+| {{SortKeyName|Günther-Martin|Pauli}} || CDU || [[Landtagswahlkreis Balingen|63 Balingen]] || Erstmandat || 46,3 % ||
+|-
+| {{SortKeyName|Reinhold|Pix}} || Grüne || [[Landtagswahlkreis Freiburg I|46 Freiburg I]] || Erstmandat || 34,5 % ||
+|-
+| {{SortKeyName|Thomas|Poreski}} || Grüne || [[Landtagswahlkreis Reutlingen|60 Reutlingen]] || Zweitmandat || 25,6 % ||
+|-
+| {{SortKey|Pröfrock, Matthias|[[Matthias Pröfrock]]}} || CDU || [[Landtagswahlkreis Waiblingen|15 Waiblingen]] || Erstmandat || 36,8 % ||
+|-
+| {{SortKeyName|Werner|Raab}} || CDU || [[Landtagswahlkreis Ettlingen|31 Ettlingen]] || Erstmandat || 41,0 % ||
+|-
+| {{SortKeyName|Patrick|Rapp}} || CDU || [[Landtagswahlkreis Breisgau|48 Breisgau]] || Erstmandat || 33,5 % ||
+|-
+| {{SortKeyName|Helmut|Rau}} || CDU || [[Landtagswahlkreis Lahr|50 Lahr]] || Erstmandat || 41,4 % ||
+|-
+| {{SortKeyName|Wolfgang|Raufelder}} || Grüne || [[Landtagswahlkreis Mannheim II|36 Mannheim II]] || Erstmandat || 29,6 % ||
+|-
+| {{SortKeyName|Nicole|Razavi}} || CDU || [[Landtagswahlkreis Geislingen|11 Geislingen]] || Erstmandat || 41,4 % ||
+|-
+| {{SortKeyName|Heribert|Rech}} || CDU || [[Landtagswahlkreis Bruchsal|29 Bruchsal]] || Erstmandat || 44,3 % ||
+|-
+| {{SortKeyName|Wolfgang|Reinhart}} || CDU || [[Landtagswahlkreis Main-Tauber|23 Main-Tauber]] || Erstmandat || 47,7 % ||
+|-
+| {{SortKeyName|Niko|Reith}} || FDP/DVP || [[Landtagswahlkreis Tuttlingen-Donaueschingen|55 Tuttlingen-Donaueschingen]] || Nachrücker im Zweitmandat || {{SortKey|07,0 %}}{{0}}7,0 % || nachgerückt am 1. August 2014 für Leopold Grimm
+|-
+| {{SortKeyName|Daniel|Renkonen}} || Grüne || [[Landtagswahlkreis Bietigheim-Bissingen|14 Bietigheim-Bissingen]] || Zweitmandat || 25,0 % ||
+|-
+| {{SortKeyName|Thomas|Reusch-Frey}} || SPD || [[Landtagswahlkreis Bietigheim-Bissingen|14 Bietigheim-Bissingen]] || Zweitmandat || 24,1 % ||
+|-
+| {{SortKeyName|Wolfgang|Reuther}} || CDU || [[Landtagswahlkreis Singen|57 Singen]] || Erstmandat || 40,1 % ||
+|-
+| {{SortKeyName|Martin|Rivoir}} || SPD || [[Landtagswahlkreis Ulm|64 Ulm]] || Zweitmandat || 23,9 % ||
+|-
+| {{SortKey|Röhm, Karl-Wilhelm|[[Karl-Wilhelm Röhm]]}} || CDU || [[Landtagswahlkreis Hechingen-Münsingen|61 Hechingen-Münsingen]] || Erstmandat || 44,5 % ||
+|-
+| {{SortKeyName|Gabi|Rolland}} || SPD || [[Landtagswahlkreis Freiburg II|47 Freiburg II]] || Zweitmandat || 24,6 % ||
+|-
+| {{SortKeyName|Karl|Rombach}} || CDU || [[Landtagswahlkreis Villingen-Schwenningen|54 Villingen-Schwenningen]] || Erstmandat || 42,6 % ||
+|-
+| {{SortKey|Rösler, Markus|[[Markus Rösler]]}} || Grüne || [[Landtagswahlkreis Vaihingen|13 Vaihingen]] || Zweitmandat || 25,5 % ||
+|-
+| {{SortKey|Rüeck, Helmut Walter|[[Helmut Walter Rüeck]]}} || CDU || [[Landtagswahlkreis Schwäbisch Hall|22 Schwäbisch Hall]] || Erstmandat || 35,4 % ||
+|-
+| {{SortKey|Rülke, Hans-Ulrich|[[Hans-Ulrich Rülke]]}} || FDP/DVP || [[Landtagswahlkreis Enz|44 Enz]] || Zweitmandat || {{SortKey|06,9 %}}{{0}}6,9 % ||
+|-
+| {{SortKeyName|Ingo|Rust}} || SPD || [[Landtagswahlkreis Eppingen|19 Eppingen]] || Zweitmandat || 24,3 % ||
+|-
+| {{SortKeyName|Nikolaos|Sakellariou}} || SPD || [[Landtagswahlkreis Schwäbisch Hall|22 Schwäbisch Hall]] || Zweitmandat || 25,1 % ||
+|-
+| {{SortKeyName|Alexander|Salomon}} || Grüne || [[Landtagswahlkreis Karlsruhe II|28 Karlsruhe II]] || Zweitmandat || 30,3 % ||
+|-
+| {{SortKeyName|Volker|Schebesta}} || CDU || [[Landtagswahlkreis Offenburg|51 Offenburg]] || Erstmandat || 41,5 % ||
+|-
+| {{SortKeyName|Stefan|Scheffold}} || CDU || [[Landtagswahlkreis Schwäbisch Gmünd|25 Schwäbisch Gmünd]] || Erstmandat || 43,9 % ||
+|-
+| {{SortKeyName|Jutta|Schiller}} || CDU || [[Landtagswahlkreis Göppingen|10 Göppingen]] || Nachrückerin im Erstmandat || 38,0 % || nachgerückt am 1. Januar 2014 für Dietrich Birk
+|-
+| {{SortKeyName|Nils|Schmid}} || SPD || [[Landtagswahlkreis Reutlingen|60 Reutlingen]] || Zweitmandat || 24,7 % ||
+|-
+| {{SortKeyName|Viktoria|Schmid}} || CDU || [[Landtagswahlkreis Enz|44 Enz]] || Erstmandat || 40,7 % ||
+|-
+| {{SortKeyName|Kai|Schmidt-Eisenlohr}} || Grüne || [[Landtagswahlkreis Wiesloch|37 Wiesloch]] || Zweitmandat || 24,9 % ||
+|-
+| {{SortKeyName|Claus|Schmiedel}} || SPD || [[Landtagswahlkreis Ludwigsburg|12 Ludwigsburg]] || Zweitmandat || 24,0 % ||
+|-
+| {{SortKeyName|Peter|Schneider|Peter Schneider (CDU)}} || CDU || [[Landtagswahlkreis Biberach|66 Biberach]] || Erstmandat || 50,7 % ||
+|-
+| {{SortKeyName|Charlotte|Schneidewind-Hartnagel}} || Grüne || [[Landtagswahlkreis Sinsheim|41 Sinsheim]] || Zweitmandat || 23,0 % ||
+|-
+| {{SortKeyName|Alexander|Schoch}} || Grüne || [[Landtagswahlkreis Emmendingen|49 Emmendingen]] || Zweitmandat || 30,4 % ||
+|-
+| {{SortKeyName|Felix|Schreiner}} || CDU || [[Landtagswahlkreis Waldshut|59 Waldshut]] || Erstmandat || 39,2 % ||
+|-
+| {{SortKey|Schütz, Katrin|[[Katrin Schütz]]}} || CDU || [[Landtagswahlkreis Karlsruhe II|28 Karlsruhe II]] || Erstmandat || 30,6 % ||
+|-
+| {{SortKey|Schwarz, Andreas|[[Andreas Schwarz (Grüne)]]}} || Grüne || [[Landtagswahlkreis Kirchheim|08 Kirchheim unter Teck]] || Zweitmandat || 23,3 % ||
+|-
+| {{SortKeyName|Marcel|Schwehr}} || CDU || [[Landtagswahlkreis Emmendingen|49 Emmendingen]] || Erstmandat || 32,4 % ||
+|-
+| {{SortKeyName|Hans-Ulrich|Sckerl|Uli Sckerl}} || Grüne || [[Landtagswahlkreis Weinheim|39 Weinheim]] || Zweitmandat || 26,4 % ||
+|-
+| {{SortKeyName|Edith|Sitzmann}} || Grüne || [[Landtagswahlkreis Freiburg II|47 Freiburg II]] || Erstmandat || 39,9 % ||
+|-
+| {{SortKeyName|Gisela|Splett}} || Grüne || [[Landtagswahlkreis Karlsruhe I|27 Karlsruhe I]] || Zweitmandat || 30,2 % ||
+|-
+| {{SortKey|Stächele, Willi|[[Willi Stächele]]}} || CDU || [[Landtagswahlkreis Kehl|52 Kehl]] || Erstmandat || 45,3 % ||Landtagspräsident bis Oktober 2011
+|-
+| {{SortKeyName|Rainer|Stickelberger}} || SPD || [[Landtagswahlkreis Lörrach|58 Lörrach]] || Zweitmandat || 27,7 % ||
+|-
+| {{SortKeyName|Johannes|Stober}} || SPD || [[Landtagswahlkreis Karlsruhe I|27 Karlsruhe I]] || Zweitmandat || 25,2 % ||
+|-
+| {{SortKeyName|Andreas|Stoch}} || SPD || [[Landtagswahlkreis Heidenheim|24 Heidenheim]] || Zweitmandat || 29,8 % ||
+|-
+| {{SortKeyName|Monika|Stolz}} || CDU || [[Landtagswahlkreis Ulm|64 Ulm]] || Erstmandat || 38,6 % ||
+|-
+| {{SortKeyName|Hans-Peter|Storz}} || SPD || [[Landtagswahlkreis Singen|57 Singen]] || Zweitmandat || 23,4 % ||
+|-
+| {{SortKeyName|Gerhard|Stratthaus}} || CDU || [[Landtagswahlkreis Schwetzingen|40 Schwetzingen]] || Erstmandat || 34,4 % ||
+|-
+| {{SortKeyName|Stefan|Teufel}} || CDU || [[Landtagswahlkreis Rottweil|53 Rottweil]] || Erstmandat || 45,9 % ||
+|-
+| {{SortKeyName|Alexander|Throm}} || CDU || [[Landtagswahlkreis Heilbronn|18 Heilbronn]] || Erstmandat || 37,0 % ||
+|-
+| {{SortKeyName|Karl|Traub}} || CDU || [[Landtagswahlkreis Ehingen|65 Ehingen]] || Erstmandat || 51,0 % ||
+|-
+| {{SortKeyName|Nikolaus|Tschenk}} || Grüne || [[Landtagswahlkreis Stuttgart II|02 Stuttgart II]] || Nachrücker im Erstmandat || 34,2 % || nachgerückt am 1. Dezember 2011 für Werner Wölfle
+|-
+| {{SortKeyName|Franz|Untersteller}} || Grüne || [[Landtagswahlkreis Stuttgart III|03 Stuttgart III]] || Zweitmandat || 28,0 % ||
+|-
+| {{SortKeyName|Georg|Wacker}} || CDU || [[Landtagswahlkreis Weinheim|39 Weinheim]] || Erstmandat || 35,0 % ||
+|-
+| {{SortKeyName|Florian|Wahl}} || SPD || [[Landtagswahlkreis Böblingen|05 Böblingen]] || Zweitmandat || 23,5 % ||
+|-
+| {{SortKeyName|Tobias|Wald}} || CDU || [[Landtagswahlkreis Baden-Baden|33 Baden-Baden]] || Erstmandat || 43,2 % ||
+|-
+| {{SortKey|Walter, Jürgen|[[Jürgen Walter (Grüne)|Jürgen Walter]]}} || Grüne || [[Landtagswahlkreis Ludwigsburg|12 Ludwigsburg]] || Zweitmandat || 26,9 % ||
+|-
+| {{SortKeyName|Alfred|Winkler|Alfred Winkler (Politiker)}} || SPD || [[Landtagswahlkreis Waldshut|59 Waldshut]] || Zweitmandat || 24,8 % || ausgeschieden am 6. Januar 2014
+|-
+| {{SortKeyName|Guido|Wolf}} || CDU || [[Landtagswahlkreis Tuttlingen-Donaueschingen|55 Tuttlingen-Donaueschingen]] || Erstmandat || 46,3 % ||Landtagspräsident von Oktober 2011 bis Februar 2015
+|-
+| {{SortKey|Wölfle, Sabine|[[Sabine Wölfle]]}} || SPD || [[Landtagswahlkreis Emmendingen|49 Emmendingen]] || Zweitmandat || 24,9 % ||
+|-
+| {{SortKey|Wölfle, Werner|[[Werner Wölfle]]}} || Grüne || [[Landtagswahlkreis Stuttgart II|02 Stuttgart II]] || Erstmandat || 34,2 % || ausgeschieden am 30. November 2011
+|-
+| {{SortKeyName|Karl|Zimmermann|Karl Zimmermann (CDU)}} || CDU || [[Landtagswahlkreis Kirchheim|08 Kirchheim unter Teck]] || Erstmandat || 38,6 % ||
+|}
