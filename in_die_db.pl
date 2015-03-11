@@ -41,10 +41,12 @@ for my $id (keys %$ds) {
 		getstore($ds->{$id}->{link}, '/tmp/'.$filename);
 		# * nach text wandeln
 		my $textcontent = `/usr/bin/pdftotext -eol unix /tmp/$filename -`;
-		# * (pdf und) text in die db werfen (drucksachen_volltexte)
+		# * text in die db werfen (drucksachen_volltexte)
 		$dbh->do('INSERT INTO drucksachen_volltexte (periode, periode_id, text) VALUES (?, ?, ?)',
 					undef, $periode, $periode_id, $textcontent);
-		# TODO: PDF in die db werfen
+		# * datum umwandeln
+		my ($day, $month, $year) = ($ds->{$id}->{date} =~ /(\d+)\.(\d+)\.(\d+)/);
+		$ds->{$id}->{date} = join('-',($year, $month, $day);
 		# * metadaten in die db werfen (drucksachen)
 		$dbh->do('INSERT INTO drucksachen (periode, periode_id, link, datum, titel) VALUES (?, ?, ?, ?, ?)',
 					undef, $periode, $periode_id, $ds->{$id}->{link}, $ds->{$id}->{date}, $ds->{$id}->{title});
@@ -68,10 +70,9 @@ for my $id (keys %$init) {
 		getstore($init->{$id}->{link}, '/tmp/'.$filename);
 		# * nach text wandeln
 		my $textcontent = `/usr/bin/pdftotext -eol unix /tmp/$filename -`;
-		# * (pdf und) text in die db werfen (initiativen_volltexte)
+		# * text in die db werfen (initiativen_volltexte)
 		$dbh->do('INSERT INTO initiativen_volltexte (periode, periode_id, text) VALUES (?, ?, ?)',
 					undef, $periode, $periode_id, $textcontent);
-		# TODO: PDF in die db werfen
 		# * text analysieren (antragsteller)
 		my $mdl_ids;
 		if ($init->{$id}->{art} eq 'Kleine Anfrage') {
@@ -100,6 +101,9 @@ for my $id (keys %$init) {
 		} else {
 			$init->{$id}->{art} = 'grosse_anfrage';
 		}
+		# * datum umwandeln
+		my ($day, $month, $year) = ($ds->{$id}->{date} =~ /(\d+)\.(\d+)\.(\d+)/);
+		$ds->{$id}->{date} = join('-',($year, $month, $day);
 		# * metadaten in die db werfen (initiativen)
 		$dbh->do('INSERT INTO initiativen (periode, periode_id, urheber_partei, link, datum, art, titel, review) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
 					undef, $periode, $periode_id, $init->{$id}->{urheber}, $init->{$id}->{link}, $init->{$id}->{date}, $init->{$id}->{art}, $init->{$id}->{title}, $flag);
