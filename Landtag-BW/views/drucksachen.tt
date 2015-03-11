@@ -1,0 +1,14 @@
+<h1>Drucksachen</h1>
+<% IF ds.size %>
+	<ul>
+	<% FOREACH doc IN ds %>
+		<li>
+			<strong>ID:</strong> <% doc.periode %>/<% doc.periode_id %><br />
+			<strong>Datum:</strong> <% doc.datum %><br />
+			<strong>Titel:</strong> <% doc.titel %><br />
+			<a href="<% doc.link %>">Link zum Landtags-PDF</a><br />
+			<a href="/drucksache/<% doc.periode %>/<% doc.periode_id %>">Zur Textversion hier</a><br />
+		</li>
+	<% END %>
+	</ul>
+<% END %>
