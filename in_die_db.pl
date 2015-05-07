@@ -8,7 +8,7 @@ use Time::Piece;
 use LWP::Simple;
 use JSON qw/from_json/;
 
-my $dbh = DBI->connect("DBI:mysql:landtagbw", "landtagbw", "landtagbw");
+my $dbh = DBI->connect("DBI:mysql:landtagbw", "landtagbw", "landtagbw", {mysql_enable_utf8 => 1,});
 my $db_init_s = $dbh->prepare('SELECT id FROM initiativen WHERE periode = ? AND periode_id = ?');
 my $db_ds_s = $dbh->prepare('SELECT id FROM drucksachen WHERE periode = ? AND periode_id = ?');
 
@@ -18,6 +18,9 @@ my $dsurl = 'http://lt.sproesser.name/ds.pl';
 my $year = localtime->strftime('%Y');
 my $month = localtime->strftime('%m');
 
+my @years = (2015, 2014, 2013, 2012, 2011, 2010, 2009);
+my @months = (1..12);
+
 # hole alle abgeordneten
 my $db_abgeordnete_s = $dbh->prepare('SELECT id, name, partei FROM mdl');
 $db_abgeordnete_s->execute();
@@ -25,16 +28,19 @@ my $mdl_liste = $db_abgeordnete_s->fetchall_hashref('id');
 1;
 
 # hole drucksachenliste von einem monat
-
+for my $year (@years) {
+	for my $month (@months) {
+		warn "Processing $month / $year\n";
 my $ds_content = get($dsurl.'?searchYear='.$year.'&searchMonth='.$month);
-my $ds = from_json($ds_content, {utf8 => 0});
+my $ds = from_json($ds_content, {utf8 => 1});
 
 for my $id (keys %$ds) {
-	warn "Processing Drucksache $id...\n";
+	warn "\tProcessing Drucksache $id...\n";
 	# alle, die noch nicht in der db sind:
 	my ($periode, $periode_id) = (split(/\//,$id));
 	$db_ds_s->execute($periode, $periode_id);
 	unless ($db_ds_s->rows) {
+		warn "\t\tAdding to DB...\n";
 		# * pdf holen
 		my $filename = $ds->{$id}->{link};
 		$filename =~ s/.*\///;
@@ -58,11 +64,12 @@ my $init_content = get($initurl.'?searchYear='.$year.'&searchMonth='.$month);
 my $init = from_json($init_content, {utf8 => 0});
 
 for my $id (keys %$init) {
-	warn "Processing Initiative $id...\n";
+	warn "\tProcessing Initiative $id...\n";
 	# alle, die noch nicht in der db sind:
 	my ($periode, $periode_id) = (split(/\//,$id));
 	$db_init_s->execute($periode, $periode_id);
 	unless ($db_init_s->rows) {
+		warn "\t\tAdding to DB...\n";
 		my $flag = 0;
 		# * pdf holen
 		my $filename = $init->{$id}->{link};
@@ -102,8 +109,8 @@ for my $id (keys %$init) {
 			$init->{$id}->{art} = 'grosse_anfrage';
 		}
 		# * datum umwandeln
-		my ($day, $month, $year) = ($ds->{$id}->{date} =~ /(\d+)\.(\d+)\.(\d+)/);
-		$ds->{$id}->{date} = join('-',($year, $month, $day));
+		my ($day, $month, $year) = ($init->{$id}->{date} =~ /(\d+)\.(\d+)\.(\d+)/);
+		$init->{$id}->{date} = join('-',($year, $month, $day));
 		# * metadaten in die db werfen (initiativen)
 		$dbh->do('INSERT INTO initiativen (periode, periode_id, urheber_partei, link, datum, art, titel, review) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
 					undef, $periode, $periode_id, $init->{$id}->{urheber}, $init->{$id}->{link}, $init->{$id}->{date}, $init->{$id}->{art}, $init->{$id}->{title}, $flag);
@@ -115,3 +122,5 @@ for my $id (keys %$init) {
 		}
 	}
 }
+} #month
+}# year
