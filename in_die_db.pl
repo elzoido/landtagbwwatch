@@ -46,7 +46,7 @@ for my $id (keys %$ds) {
 					undef, $periode, $periode_id, $textcontent);
 		# * datum umwandeln
 		my ($day, $month, $year) = ($ds->{$id}->{date} =~ /(\d+)\.(\d+)\.(\d+)/);
-		$ds->{$id}->{date} = join('-',($year, $month, $day);
+		$ds->{$id}->{date} = join('-',($year, $month, $day));
 		# * metadaten in die db werfen (drucksachen)
 		$dbh->do('INSERT INTO drucksachen (periode, periode_id, link, datum, titel) VALUES (?, ?, ?, ?, ?)',
 					undef, $periode, $periode_id, $ds->{$id}->{link}, $ds->{$id}->{date}, $ds->{$id}->{title});
@@ -103,7 +103,7 @@ for my $id (keys %$init) {
 		}
 		# * datum umwandeln
 		my ($day, $month, $year) = ($ds->{$id}->{date} =~ /(\d+)\.(\d+)\.(\d+)/);
-		$ds->{$id}->{date} = join('-',($year, $month, $day);
+		$ds->{$id}->{date} = join('-',($year, $month, $day));
 		# * metadaten in die db werfen (initiativen)
 		$dbh->do('INSERT INTO initiativen (periode, periode_id, urheber_partei, link, datum, art, titel, review) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
 					undef, $periode, $periode_id, $init->{$id}->{urheber}, $init->{$id}->{link}, $init->{$id}->{date}, $init->{$id}->{art}, $init->{$id}->{title}, $flag);
