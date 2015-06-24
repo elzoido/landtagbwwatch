@@ -3,10 +3,8 @@ body {
 margin: 0;
 margin-bottom: 25px;
 padding: 0;
-background-color: #ddd;
-background-image: url("/images/perldancer-bg.jpg");
+background-color: white;
 background-repeat: no-repeat;
-background-position: top left;
 
 font-family: "Lucida Grande", "Bitstream Vera Sans", "Verdana";
 font-size: 13px;
@@ -186,4 +184,9 @@ text-align: center;
 padding-right: 160px;
 font-family: sans-serif;
 font-size: 10px;
+}
+
+#map {
+	width: 800px;
+	height: 800px;
 }

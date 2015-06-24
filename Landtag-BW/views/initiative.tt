@@ -1,0 +1,7 @@
+<h1>Initiative-Detailansicht</h1>
+
+<h2><% doc.titel %></h2>
+
+<h3><% doc.datum %></h3>
+
+<pre><% doc.text %></pre>

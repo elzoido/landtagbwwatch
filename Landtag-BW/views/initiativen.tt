@@ -1,0 +1,29 @@
+<h1><% titel %></h1>
+<ul>
+<li><a href="/initiativen/kleine_anfragen">kleine Anfragen</a></li>
+<li><a href="/initiativen/antraege">Anträge</a></li>
+<li><a href="/initiativen/grosse_anfragen">große Anfragen</a></li>
+</ul>
+<% IF ds.size %>
+	<ul>
+	<% FOREACH doc IN ds %>
+		<li>
+			<strong>ID:</strong> <% doc.periode %>/<% doc.periode_id %><br />
+			<strong>Datum:</strong> <% doc.datum %><br />
+			<strong>Titel:</strong> <% doc.titel %><br />
+			<strong>Art:</strong> <% IF doc.art == 'kleine_anfrage' %>Kleine Anfrage<% ELSIF doc.art == 'antrag' %>Antrag<% ELSE %>Große Anfrage<% END %><br />
+			<strong>Urheber-Partei:</strong> <% doc.urheber_partei %><br />
+			<% IF doc.mdl.size %>
+				<strong>erkannte MDL:</strong>
+				<ul>
+					<% FOREACH mdl_id IN doc.mdl.keys %>
+						<li><% doc.mdl.$mdl_id.vorname %> <% doc.mdl.$mdl_id.name %> (WK <% doc.mdl.$mdl_id.wahlkreis %>)</li>
+					<% END %>
+				</ul>
+			<% END %>
+			<a href="<% doc.link %>">Link zum Landtags-PDF</a><br />
+			<a href="/initiative/<% doc.periode %>/<% doc.periode_id %>">Zur Textversion hier</a><br />
+		</li>
+	<% END %>
+	</ul>
+<% END %>
