@@ -61,7 +61,7 @@ for my $id (keys %$ds) {
 
 # hole initiativenliste von einem monat
 my $init_content = get($initurl.'?searchYear='.$year.'&searchMonth='.$month);
-my $init = from_json($init_content, {utf8 => 0});
+my $init = from_json($init_content, {utf8 => 1});
 
 for my $id (keys %$init) {
 	warn "\tProcessing Initiative $id...\n";
