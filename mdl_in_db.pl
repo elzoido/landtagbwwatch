@@ -5,23 +5,24 @@ use strict;
 
 use DBI;
 use Encode qw/decode encode/;
+use Encode::Guess;
 
-my $dbh = DBI->connect("DBI:mysql:landtagbw", "landtagbw", "landtagbw");
+my $dbh = DBI->connect("DBI:mysql:landtagbw", "landtagbw", "landtagbw", {mysql_enable_utf8 => 1,});
 
 my $mdl;
 
 # hole mdl-liste aus Abgeordnete_WP15.csv
-open(CSV,'<','Abgeordnete_WP15.csv');
+open(CSV,'<:encoding(UTF-8)','Abgeordnete_WP15.csv');
 
 my $first = 1;
 while(<CSV>) {
 	chomp;
-	$_ = encode('UTF-8', $_);
 	if ($first) {
 		$first = 0;
 		next;
 	}
-	my ($anrede, $nachname, $vorname, $titel, $blubber, $fraktion, $anschrift, $plz, $ort) = split(/;/,$_);
+#	$_ = decode('utf-8',$_);
+	my ($anrede, $nachname, $vorname, $titel, $blubber, $fraktion, $anschrift, $plz, $ort) = split(/,/,$_);
 	$mdl->{lc($nachname.$vorname.$fraktion)} = {
 		anrede => $anrede,
 		nachname => $nachname,
@@ -34,7 +35,7 @@ while(<CSV>) {
 close(CSV);
 
 # hole wahlkreisnummer und inaktive aus mitglieder_wikipedia.txt
-open(WIKI,'<','mitglieder_wikipedia.txt');
+open(WIKI,'<:encoding(UTF-8)','mitglieder_wikipedia.txt');
 
 while(<WIKI>) {
 	chomp;
