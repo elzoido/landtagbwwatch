@@ -15,7 +15,9 @@
 				<th class="art">Art</th>
 				<% END %>
 				<th class="partei">Partei</th>
+				<% IF titel == 'Kleine Anfragen' %>
 				<th class="mdl">MDL</th>
+				<% END %>
 				<th class="links">Links</th>
 			</tr>
 		</thead>
@@ -29,6 +31,7 @@
 				<td><% IF doc.art == 'kleine_anfrage' %>Kleine Anfrage<% ELSIF doc.art == 'antrag' %>Antrag<% ELSE %>Große Anfrage<% END %></td>
 				<% END %>
 				<td><% IF doc.urheber_partei == 'FDP_DVP' %>FDP/DVP<% ELSE %><% doc.urheber_partei %><% END %></td>
+				<% IF titel == 'Kleine Anfragen' %>
 				<td>
 				<% IF doc.mdl.size %>
 					<ul>
@@ -38,6 +41,7 @@
 					</ul>
 				<% END %>
 				</td>
+				<% END %>
 				<td>
 					<a href="<% doc.link %>">Landtags-PDF</a><br />
 					<a href="/initiative/<% doc.periode %>/<% doc.periode_id %>">Textversion</a><br />

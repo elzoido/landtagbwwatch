@@ -108,12 +108,7 @@ for my $year (@years) {
                         }
                         next unless $parteimatch;
 
-                        if ( $textcontent =~ /\b$mdl_liste->{$mdl_id}->{name}\b/ ) {
-                            if ( $mdl_liste->{$mdl_id}->{name} eq 'Wahl' ) {
-
-                                # Sonderfall
-                                $flag = 1;
-                            }
+                        if ( $textcontent =~ /\n[^\n]*\b$mdl_liste->{$mdl_id}->{name}\b[^\n]*$mdl_liste->{$mdl_id}->{partei}\n/i ) {
                             push( @$mdl_ids, $mdl_id );
                         }
                     }
@@ -149,8 +144,11 @@ for my $year (@years) {
                 # * antragsteller in die db werfen (mdl_initiativen)
                 my $insert_id = $dbh->{'mysql_insertid'};
                 for my $mdl_id (@$mdl_ids) {
-                    $dbh->do( 'INSERT INTO mdl_initiativen (mdl_id, initiativen_id) VALUES (?, ?)',
-                        undef, $mdl_id, $insert_id );
+                    $dbh->do(		$dbh->do( 'INSERT INTO mdl_initiativen (mdl_id, initiativen_id) '.
+			'SELECT * FROM (SELECT ?, ?) AS tmp WHERE NOT EXISTS ('.
+				'SELECT mdl_id, initiativen_id FROM mdl_initiativen WHERE mdl_id = ? AND initiativen_id = ?'.
+			') LIMIT 1',
+                        undef, $mdl_id, $insert_id, $mdl_id, $insert_id );
                 }
             }
         }
