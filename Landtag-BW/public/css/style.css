@@ -194,24 +194,28 @@ font-size: 10px;
 table#initiativen {
 }
 
-#initiativen .id {
+table .id {
 	width: 8%;
 }
 
-#initiativen .datum {
+table .datum {
 	width: 8%;
 }
 
-#initiativen .titel {
+table .titel {
 	width: 50%;
 }
 
-#initiativen .partei {
+table#drucksachen .titel {
+	width: 70%;
+}
+
+table .partei {
 	width: 5%;
 }
 
-#initiativen .mdl {
+table .mdl {
 }
 
-#initiativen .links {
+table .links {
 }

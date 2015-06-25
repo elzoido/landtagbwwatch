@@ -28,13 +28,6 @@
 </head>
 <body>
 <% content %>
-<script>
-$(document).ready( function () {
-    $('#initiativen').DataTable( {
-		"order": [ 0, 'asc' ]
-		});
-} );
-</script>
 <div id="footer">
 Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>
 </div>

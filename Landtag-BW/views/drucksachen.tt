@@ -1,14 +1,34 @@
 <h1>Drucksachen</h1>
 <% IF ds.size %>
-	<ul>
+	<table id="drucksachen" class="stripe hover compact row-border">
+		<thead>
+			<tr>
+				<th class="id">ID</th>
+				<th class="datum">Datum</th>
+				<th class="titel">Titel</th>
+				<th class="links">Links</th>
+			</tr>
+		</thead>
+		<tbody>
 	<% FOREACH doc IN ds %>
-		<li>
-			<strong>ID:</strong> <% doc.periode %>/<% doc.periode_id %><br />
-			<strong>Datum:</strong> <% doc.datum %><br />
-			<strong>Titel:</strong> <% doc.titel %><br />
-			<a href="<% doc.link %>">Link zum Landtags-PDF</a><br />
-			<a href="/drucksache/<% doc.periode %>/<% doc.periode_id %>">Zur Textversion hier</a><br />
-		</li>
+			<tr>
+				<td><% doc.periode %>/<% doc.periode_id %></td>
+				<td><% doc.datum %></td>
+				<td><% doc.titel %></td>
+				<td>
+					<a href="<% doc.link %>">Landtags-PDF</a><br />
+					<a href="/drucksache/<% doc.periode %>/<% doc.periode_id %>">Textversion</a>
+				</td>
+			</tr>
 	<% END %>
-	</ul>
+		</tbody>
+	</table>
+	<script>
+		$(document).ready( function () {
+			$('#drucksachen').DataTable( {
+				"order": [ 0, 'asc' ]
+			});
+		} );
+	</script>
+
 <% END %>
