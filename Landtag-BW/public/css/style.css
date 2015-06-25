@@ -190,3 +190,26 @@ font-size: 10px;
 	width: 800px;
 	height: 800px;
 }
+
+table#initiativen {
+}
+
+#initiativen .id {
+}
+
+#initiativen .datum {
+}
+
+#initiativen .titel {
+	width: 50%;
+}
+
+#initiativen .partei {
+	width: 5%;
+}
+
+#initiativen .mdl {
+}
+
+#initiativen .links {
+}

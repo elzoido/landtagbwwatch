@@ -4,7 +4,6 @@
 <head>
 <meta http-equiv="Content-type" content="text/html; charset=<% settings.charset %>" />
 <title>Landtag::BW</title>
-<link rel="stylesheet" href="<% request.uri_base %>/css/style.css" />
 
 <!-- Grab jQuery from a CDN, fall back to local if necessary -->
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -17,9 +16,25 @@
 
 <script type="text/javascript" src="/javascripts/leaflet.ajax.min.js"></script>
 
+<!-- DataTables CSS -->
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+  
+<!-- DataTables -->
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.js"></script>
+
+<link rel="stylesheet" href="<% request.uri_base %>/css/style.css" />
+
+
 </head>
 <body>
 <% content %>
+<script>
+$(document).ready( function () {
+    $('#initiativen').DataTable( {
+		"order": [ 0, 'asc' ]
+		});
+} );
+</script>
 <div id="footer">
 Powered by <a href="http://perldancer.org/">Dancer2</a> <% dancer_version %>
 </div>

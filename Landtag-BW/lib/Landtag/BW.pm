@@ -1,6 +1,7 @@
 package Landtag::BW;
 use Dancer2;
 use Dancer2::Plugin::Database;
+use Dancer2::Plugin::Ajax;
 
 our $VERSION = '0.1';
 
@@ -58,7 +59,7 @@ get '/initiativen/kleine_anfragen' => sub {
 		my $sth_2 = database->prepare('SELECT mdl.id AS mdl_id, mdl.vorname AS vorname, mdl.name AS name, mdl.partei AS partei, mdl.wahlkreis AS wahlkreis FROM mdl, mdl_initiativen WHERE mdl.id = mdl_initiativen.mdl_id AND mdl_initiativen.initiativen_id = ?');
 		$sth_2->execute($id);
 		my $mdl_result = $sth_2->fetchall_hashref('mdl_id');
-		
+	
 		push(@$result, {periode => $dbresult->{$id}->{periode},
 						periode_id => $dbresult->{$id}->{periode_id},
 						link => $dbresult->{$id}->{link},

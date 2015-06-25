@@ -5,25 +5,45 @@
 <li><a href="/initiativen/grosse_anfragen">große Anfragen</a></li>
 </ul>
 <% IF ds.size %>
-	<ul>
-	<% FOREACH doc IN ds %>
-		<li>
-			<strong>ID:</strong> <% doc.periode %>/<% doc.periode_id %><br />
-			<strong>Datum:</strong> <% doc.datum %><br />
-			<strong>Titel:</strong> <% doc.titel %><br />
-			<strong>Art:</strong> <% IF doc.art == 'kleine_anfrage' %>Kleine Anfrage<% ELSIF doc.art == 'antrag' %>Antrag<% ELSE %>Große Anfrage<% END %><br />
-			<strong>Urheber-Partei:</strong> <% doc.urheber_partei %><br />
-			<% IF doc.mdl.size %>
-				<strong>erkannte MDL:</strong>
-				<ul>
-					<% FOREACH mdl_id IN doc.mdl.keys %>
-						<li><% doc.mdl.$mdl_id.vorname %> <% doc.mdl.$mdl_id.name %> (WK <% doc.mdl.$mdl_id.wahlkreis %>)</li>
-					<% END %>
-				</ul>
-			<% END %>
-			<a href="<% doc.link %>">Link zum Landtags-PDF</a><br />
-			<a href="/initiative/<% doc.periode %>/<% doc.periode_id %>">Zur Textversion hier</a><br />
-		</li>
-	<% END %>
-	</ul>
+	<table id="initiativen" class="stripe hover compact row-border">
+		<thead>
+			<tr>
+				<th class="id">ID</th>
+				<th class="datum">Datum</th>
+				<th class="titel">Titel</th>
+				<% IF titel == 'Initiativen' %>
+				<th class="art">Art</th>
+				<% END %>
+				<th class="partei">Partei</th>
+				<th class="mdl">MDL</th>
+				<th class="links">Links</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% FOREACH doc IN ds %>
+			<tr>
+				<td><% doc.periode %>/<% doc.periode_id %></td>
+				<td><% doc.datum %></td>
+				<td><% doc.titel %></td>
+				<% IF titel == 'Initiativen' %>
+				<td><% IF doc.art == 'kleine_anfrage' %>Kleine Anfrage<% ELSIF doc.art == 'antrag' %>Antrag<% ELSE %>Große Anfrage<% END %></td>
+				<% END %>
+				<td><% IF doc.urheber_partei == 'FDP_DVP' %>FDP/DVP<% ELSE %><% doc.urheber_partei %><% END %></td>
+				<td>
+				<% IF doc.mdl.size %>
+					<ul>
+						<% FOREACH mdl_id IN doc.mdl.keys %>
+							<li><% doc.mdl.$mdl_id.vorname %> <% doc.mdl.$mdl_id.name %> (WK <% doc.mdl.$mdl_id.wahlkreis %>)</li>
+						<% END %>
+					</ul>
+				<% END %>
+				</td>
+				<td>
+					<a href="<% doc.link %>">Landtags-PDF</a><br />
+					<a href="/initiative/<% doc.periode %>/<% doc.periode_id %>">Textversion</a><br />
+				</td>
+			</tr>
+		<% END %>
+		</tbody>
+	</table>
 <% END %>
