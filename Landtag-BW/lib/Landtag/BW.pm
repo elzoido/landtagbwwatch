@@ -60,12 +60,18 @@ get '/initiativen/kleine_anfragen' => sub {
     $sth->execute();
     my $dbresult = $sth->fetchall_hashref('id');
 	my $result;
+
+	my $sth_2 = database->prepare('SELECT mdl.id AS mdl_id, mdl.vorname AS vorname, mdl.name AS name, mdl.partei AS partei, mdl.wahlkreis AS wahlkreis FROM mdl, mdl_initiativen WHERE mdl.id = mdl_initiativen.mdl_id AND mdl_initiativen.initiativen_id = ?');
+	my $sth_reply = database->prepare('SELECT id FROM drucksachen WHERE periode = ? AND periode_id = ?');
 	
 	for my $id (keys %$dbresult) {
-		my $sth_2 = database->prepare('SELECT mdl.id AS mdl_id, mdl.vorname AS vorname, mdl.name AS name, mdl.partei AS partei, mdl.wahlkreis AS wahlkreis FROM mdl, mdl_initiativen WHERE mdl.id = mdl_initiativen.mdl_id AND mdl_initiativen.initiativen_id = ?');
 		$sth_2->execute($id);
 		my $mdl_result = $sth_2->fetchall_hashref('mdl_id');
 	
+		$sth_reply->execute($dbresult->{$id}->{periode}, $dbresult->{$id}->{periode_id});
+		my $antwort = 0;
+		$antwort = 1 if ($sth_reply->fetchrow_hashref());
+
 		push(@$result, {periode => $dbresult->{$id}->{periode},
 						periode_id => $dbresult->{$id}->{periode_id},
 						link => $dbresult->{$id}->{link},
@@ -73,6 +79,7 @@ get '/initiativen/kleine_anfragen' => sub {
 						urheber_partei => $dbresult->{$id}->{urheber_partei},
 						mdl => $mdl_result,
 						art => $dbresult->{$id}->{art},
+						antwort => $antwort,
 						titel => $dbresult->{$id}->{titel}});
 	}
 	

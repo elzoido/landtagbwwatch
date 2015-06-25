@@ -45,7 +45,7 @@
 				<td>
 					<a href="<% doc.link %>">Landtags-PDF</a><br />
 					<a href="/initiative/<% doc.periode %>/<% doc.periode_id %>">Textversion</a>
-					<% IF antwort %>
+					<% IF doc.antwort == 1 %>
 					<br /><a href="/drucksache/<% doc.periode %>/<% doc.periode_id %>">Antwort</a>
 					<% END %>
 				</td>
