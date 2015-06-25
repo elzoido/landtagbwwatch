@@ -33,13 +33,19 @@ get '/initiativen' => sub {
     my $dbresult = $sth->fetchall_hashref('id');
 	my $result;
 	
+	my $sth_reply = database->prepare('SELECT id FROM drucksachen WHERE periode = ? AND periode_id = ?');
+	
 	for my $id (keys %$dbresult) {
+		$sth_reply->execute($dbresult->{$id}->{periode}, $dbresult->{$id}->{periode_id});
+		my $antwort = 0;
+		$antwort = 1 if ($sth_reply->fetchall_hashref('id'));
 		push(@$result, {periode => $dbresult->{$id}->{periode},
 						periode_id => $dbresult->{$id}->{periode_id},
 						link => $dbresult->{$id}->{link},
 						datum => $dbresult->{$id}->{datum},
 						urheber_partei => $dbresult->{$id}->{urheber_partei},
 						art => $dbresult->{$id}->{art},
+						antwort => $antwort,
 						titel => $dbresult->{$id}->{titel}});
 	}
 	
