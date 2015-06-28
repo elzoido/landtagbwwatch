@@ -74,3 +74,10 @@ CREATE TABLE IF NOT EXISTS dokumente_kategorien (
 	kategorien_id INT NOT NULL,
 	PRIMARY KEY(id)
 ) CHARACTER SET utf8;
+
+CREATE TABLE IF NOT EXISTS kategorien_suchbegriffe (
+	id INT NOT NULL AUTO_INCREMENT,
+	kategorien_id INT NOT NULL,
+	suchbegriff VARCHAR(255),
+	PRIMARY KEY(id)
+) CHARACTER SET utf8;
