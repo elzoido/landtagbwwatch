@@ -138,6 +138,9 @@ get '/initiative/:periode/:periode_id' => sub {
 	$sth->execute(params->{periode}, params->{periode_id});
 	my $result = $sth->fetchrow_hashref();
 	
+	my $sth_kat = database->prepare('SELECT kategorien.name AS kategorie, ');
+	kategorien_suchbegriffe
+	
 	template 'initiative', {
 		doc => $result,
 	};
@@ -152,6 +155,71 @@ get '/drucksache/:periode/:periode_id' => sub {
 		doc => $result,
 	};
 };
+
+sub MatchString {
+	my ($title, $match) = (shift, shift);
+	
+	return 0 unless ($match);
+	
+	my $stopwords_found = 0;
+	my $pluswords_found = 0;
+	my $pluswords = 0;
+	my $matching = 0;
+	
+	for my $word (split/\s+/,$match) {
+		if ($word =~ /^-/) {
+			#negative matching
+			$word =~ s/^-//;
+			if ($title =~ /$match/i) {
+				$stopwords_found++;
+			}
+		} elsif ($word =~ /^+/) {
+			#force matching
+			$pluswords++;
+			$word =~ s/^+//;
+			if ($title =~ /$match/i) {
+				$pluswords_found++;
+			}
+		} else {
+			#positive matching
+			if ($title =~ /$match/i) {
+				$matching++;
+			}
+		}
+	}
+	
+	if ($stopwords_found) {
+		return 0;
+	} elsif ($pluswords) {
+		if ($pluswords == $pluswords_found) {
+			return 1;
+		} else {
+			return 0;
+		}
+	} elsif ($matching) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
+
+get '/kategorien' => sub {
+	# show all kategorien
+	# (maybe all suchbegriffe?)
+	# form to add new Kategorie
+};
+
+get '/kategorien/ohne' => sub {
+	# show all kleine Anfragen without Kategorie
+	# add field to add another Suchbegriff to a Kategorie
+}
+
+get '/kategorien/:kategorie_id' => sub {
+	# show suchbegriffe
+	# show matching kleine Anfragen
+}
+
+
 
 get '/karte' => sub {
 	template 'karte';
