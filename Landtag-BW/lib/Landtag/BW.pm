@@ -155,7 +155,157 @@ get '/drucksache/:periode/:periode_id' => sub {
 	};
 };
 
-ajax '/suche' => sub {
+any ['get', 'post'] => '/suche' => sub {
+	my $search = params->{s};
+	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
+	    FROM drucksachen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
+
+	my $init_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link, urheber_partei
+	    FROM initiativen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
+
+	my $result;
+	
+	if (length($search) > 3) {
+
+		$ds_sth->execute($search);
+		$init_sth->execute($search);
+		my $ds_result = $ds_sth->fetchall_hashref('id');
+		my $init_result = $init_sth->fetchall_hashref('id');
+
+		for my $id (keys %$init_result) {
+			push(@{$result->{init}},
+				{periode => $init_result->{$id}->{periode},
+				 periode_id => $init_result->{$id}->{periode_id},
+				 link => $init_result->{$id}->{link},
+				 datum => $init_result->{$id}->{datum},
+				 urheber_partei => $init_result->{$id}->{urheber_partei},
+				 art => $init_result->{$id}->{art},
+				 titel => $init_result->{$id}->{titel}});
+		}
+		
+		for my $id (keys %$ds_result) {
+			push(@{$result->{ds}},
+				{periode => $ds_result->{$id}->{periode},
+				 periode_id => $ds_result->{$id}->{periode_id},
+				 link => $ds_result->{$id}->{link},
+				 datum => $ds_result->{$id}->{datum},
+				 titel => $ds_result->{$id}->{titel}});
+		}
+
+	}
+
+	template 'suche', { ds => $result->{ds}, init => $result->{init}, suchbegriff => $search };
+};
+
+ajax '/suche/drucksachen' => sub {
+	my $search = params->{s};
+	$search = join("* ", split(/\s+/, $search)) . "*";
+	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
+	    FROM drucksachen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE) ORDER BY periode DESC, periode_id DESC');
+
+	my $result;
+
+	if (length($search) > 3) {
+		$ds_sth->execute($search);
+		my $ds_result = $ds_sth->fetchall_hashref('id');
+		for my $id (keys %$ds_result) {
+			push(@{$result->{ds}},
+				{periode => $ds_result->{$id}->{periode},
+				 periode_id => $ds_result->{$id}->{periode_id},
+				 link => $ds_result->{$id}->{link},
+				 datum => $ds_result->{$id}->{datum},
+				 titel => $ds_result->{$id}->{titel}});
+		}
+		
+		if ($result->{ds}) {
+			return to_json( $result->{ds} )
+		}
+	}
+	return to_json( [] );
+};
+
+ajax '/suche/initiativen' => sub {
+	my $search = params->{s};
+	$search = join("* ", split(/\s+/, $search)) . "*";
+
+	my $init_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link, urheber_partei
+	    FROM initiativen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE) ORDER BY periode DESC, periode_id DESC');
+		
+	my $result;
+	
+	if (length($search) > 3) {
+		$init_sth->execute($search);
+		my $init_result = $init_sth->fetchall_hashref('id');
+		
+		for my $id (keys %$init_result) {
+			push(@{$result->{init}},
+				{periode => $init_result->{$id}->{periode},
+				 periode_id => $init_result->{$id}->{periode_id},
+				 link => $init_result->{$id}->{link},
+				 datum => $init_result->{$id}->{datum},
+				 urheber_partei => $init_result->{$id}->{urheber_partei},
+				 art => $init_result->{$id}->{art},
+				 titel => $init_result->{$id}->{titel}});
+		}
+		if ($result->{init}) {
+			return to_json( $result->{init} )
+		}
+	}
+	return to_json( [] );
+};
+
+get '/suche/:s' => sub {
+	my $search = params->{s};
+	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
+	    FROM drucksachen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
+
+	my $init_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link, urheber_partei
+	    FROM initiativen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
+
+	my $result;
+	
+	if (length($search) > 3) {
+
+		$ds_sth->execute($search);
+		$init_sth->execute($search);
+		my $ds_result = $ds_sth->fetchall_hashref('id');
+		my $init_result = $init_sth->fetchall_hashref('id');
+
+		for my $id (keys %$init_result) {
+			push(@{$result->{init}},
+				{periode => $init_result->{$id}->{periode},
+				 periode_id => $init_result->{$id}->{periode_id},
+				 link => $init_result->{$id}->{link},
+				 datum => $init_result->{$id}->{datum},
+				 urheber_partei => $init_result->{$id}->{urheber_partei},
+				 art => $init_result->{$id}->{art},
+				 titel => $init_result->{$id}->{titel}});
+		}
+		
+		for my $id (keys %$ds_result) {
+			push(@{$result->{ds}},
+				{periode => $ds_result->{$id}->{periode},
+				 periode_id => $ds_result->{$id}->{periode_id},
+				 link => $ds_result->{$id}->{link},
+				 datum => $ds_result->{$id}->{datum},
+				 titel => $ds_result->{$id}->{titel}});
+		}
+
+	}
+
+	template 'suche', { ds => $result->{ds}, init => $result->{init}, suchbegriff => $search };
+
+};
+
+
+
+ajax '/suche/:s' => sub {
 	my $search = params->{s};
 	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
 	    FROM drucksachen
@@ -176,6 +326,7 @@ ajax '/suche' => sub {
 		return to_json( {ds => {}, init => {}} );
 	}
 };
+
 
 get '/kategorien' => sub {
 	# show all kategorien

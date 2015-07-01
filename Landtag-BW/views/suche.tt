@@ -1,0 +1,173 @@
+<h1>Suche</h1>
+
+<form action="/suche" method="post">
+<p>Suchbegriff: <input type="text" id="suchbegriff" name="s" length=30 value="<% suchbegriff %>"/><input type="submit" /></p>
+</form>
+
+<h3>Drucksachen</h3>
+
+<div class="drucksachen_ergebnis">
+	<table id="drucksachen" class="stripe hover compact row-border">
+		<thead>
+			<tr>
+				<th class="id">ID</th>
+				<th class="datum">Datum</th>
+				<th class="titel">Titel</th>
+				<th class="links">Links</th>
+			</tr>
+		</thead>
+		<tbody>
+	<% FOREACH doc IN ds %>
+			<tr>
+				<td><% doc.periode %>/<% doc.periode_id %></td>
+				<td><% doc.datum %></td>
+				<td><% doc.titel %></td>
+				<td>
+					<a href="<% doc.link %>">Landtags-PDF</a><br />
+					<a href="/drucksache/<% doc.periode %>/<% doc.periode_id %>">Textversion</a>
+				</td>
+			</tr>
+	<% END %>
+		</tbody>
+	</table>
+</div>
+
+<h3>Initiativen</h3>
+
+<div class="initiativen_ergebnis">
+	<table id="initiativen" class="stripe hover compact row-border">
+		<thead>
+			<tr>
+				<th class="id">ID</th>
+				<th class="datum">Datum</th>
+				<th class="titel">Titel</th>
+				<th class="art">Art</th>
+				<th class="partei">Partei</th>
+				<th class="links">Links</th>
+			</tr>
+		</thead>
+		<tbody>
+		<% FOREACH doc IN init %>
+			<tr>
+				<td><% doc.periode %>/<% doc.periode_id %></td>
+				<td><% doc.datum %></td>
+				<td><% doc.titel %></td>
+				<td><% IF doc.art == 'kleine_anfrage' %>Kleine Anfrage<% ELSIF doc.art == 'antrag' %>Antrag<% ELSE %>Große Anfrage<% END %></td>
+				<td><% IF doc.urheber_partei == 'FDP_DVP' %>FDP/DVP<% ELSE %><% doc.urheber_partei %><% END %></td>
+				<td>
+					<a href="<% doc.link %>">Landtags-PDF</a><br />
+					<a href="/initiative/<% doc.periode %>/<% doc.periode_id %>">Textversion</a>
+					<% IF doc.antwort == 1 %>
+					<br /><a href="/drucksache/<% doc.periode %>/<% doc.periode_id %>">Antwort</a>
+					<% END %>
+				</td>
+			</tr>
+		<% END %>
+		</tbody>
+	</table>
+	
+</div>
+
+<script>
+
+<% IF ds.size %>
+	$('#drucksachen_ergebnis').show();
+<% ELSE %>
+	$('#drucksachen_ergebnis').hide();
+<% END %>
+
+<% IF init.size %>
+	$('#initiativen_ergebnis').show();
+<% ELSE %>
+	$('#initiativen_ergebnis').hide();
+<% END %>
+
+var inittable;
+var dstable;
+
+function dataSrcDs( json ) {
+	var data = new Array(json.length);
+	for ( var i=0, ien = json.length; i < ien; i++ ) {
+		data[i] = new Array(4);
+		data[i][0] = json[i].periode + '/' + json[i].periode_id;
+		data[i][1] = json[i].datum;
+		data[i][2] = json[i].titel;
+		data[i][3] = '<a href="' + json[i].link + '">Landtags-PDF</a><br />' + "\n" +
+					 '<a href="/drucksache/' + json[i].periode + '/' + json[i].periode_id + '">Textversion</a>';
+
+	}
+	return data;
+};
+
+function dataSrcInit( json ) {
+	var data = new Array(json.length);
+	for ( var i=0, ien = json.length; i < ien; i++ ) {
+		data[i] = new Array(6);
+		data[i][0] = json[i].periode + '/' + json[i].periode_id;
+		data[i][1] = json[i].datum;
+		data[i][2] = json[i].titel;
+		if (json[i].art == 'kleine_anfrage') {
+			data[i][3] = 'Kleine Anfrage';
+		} else if (json[i].art == 'antrag') {
+			data[i][3] = 'Antrag';
+		} else {
+			data[i][3] = 'Große Anfrage';
+		}
+		data[i][4] = json[i].urheber_partei;
+		data[i][4].replace("_","/");
+		data[i][5] = '<a href="' + json[i].link + '">Landtags-PDF</a><br />' + "\n" +
+					 '<a href="/drucksache/' + json[i].periode + '/' + json[i].periode_id + '">Textversion</a>';
+
+	}
+	return data;
+};
+
+
+$(document).ready( function () {
+if (0) {
+
+	inittable = $('#initiativen').DataTable( {
+		"order": [ 1, 'desc' ],
+		"searching": false
+	});
+
+	dstable = $('#drucksachen').DataTable( {
+		"order": [[ 1, 'desc' ]],
+		"searching": false
+	});
+
+} else {
+
+	dstable = $('#drucksachen').DataTable( {
+		"order": [[ 1, 'desc' ], [ 0, 'asc' ]],
+		"searching": false,
+		"ajax" : {
+			"url": "/suche/drucksachen",
+			"dataSrc": dataSrcDs,
+			"data": function (d) {
+				d.s = $('#suchbegriff').val()
+			}
+		}
+	});
+
+	inittable = $('#initiativen').DataTable( {
+		"order": [[ 1, 'desc' ], [ 0, 'asc' ]],
+		"searching": false,
+		"ajax" : {
+			"url": "/suche/initiativen",
+			"dataSrc": dataSrcInit,
+			"data": function (d) {
+				d.s = $('#suchbegriff').val();
+			}
+		}
+	});
+}
+	$('#suchbegriff').keyup(function() {
+		dstable.ajax.reload();
+		inittable.ajax.reload();
+	});
+} );
+
+
+
+</script>
