@@ -41,3 +41,5 @@ plugins:
             AutoCommit: 0
         on_connect_do: ["SET NAMES 'utf8'", "SET CHARACTER SET 'utf8'" ]
         log_queries: 1
+	'Ajax':
+		content_type: 'application/json'
