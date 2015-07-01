@@ -155,8 +155,16 @@ get '/drucksache/:periode/:periode_id' => sub {
 	};
 };
 
+sub TranslateSuchbegriff {
+	my ($suchbegriff) = (shift);
+	my $search = join("* ", split(/\s+/, $suchbegriff)) . "*";
+	return $search;
+}
+
 any ['get', 'post'] => '/suche' => sub {
-	my $search = params->{s};
+	my $suchbegriff = params->{s};
+	my $search = TranslateSuchbegriff($suchbegriff);
+	
 	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
 	    FROM drucksachen
 		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
@@ -168,7 +176,7 @@ any ['get', 'post'] => '/suche' => sub {
 	my $result;
 	
 	if (length($search) > 3) {
-
+		
 		$ds_sth->execute($search);
 		$init_sth->execute($search);
 		my $ds_result = $ds_sth->fetchall_hashref('id');
@@ -200,8 +208,8 @@ any ['get', 'post'] => '/suche' => sub {
 };
 
 ajax '/suche/drucksachen' => sub {
-	my $search = params->{s};
-	$search = join("* ", split(/\s+/, $search)) . "*";
+	my $suchbegriff = params->{s};
+	my $search = TranslateSuchbegriff($suchbegriff);
 	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
 	    FROM drucksachen
 		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE) ORDER BY periode DESC, periode_id DESC');
@@ -228,7 +236,8 @@ ajax '/suche/drucksachen' => sub {
 };
 
 ajax '/suche/initiativen' => sub {
-	my $search = params->{s};
+	my $suchbegriff = params->{s};
+	my $search = TranslateSuchbegriff($suchbegriff);
 	$search = join("* ", split(/\s+/, $search)) . "*";
 
 	my $init_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link, urheber_partei
@@ -259,7 +268,8 @@ ajax '/suche/initiativen' => sub {
 };
 
 ajax '/suche/:s' => sub {
-	my $search = params->{s};
+	my $suchbegriff = params->{s};
+	my $search = TranslateSuchbegriff($suchbegriff);
 	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
 	    FROM drucksachen
 		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
@@ -280,11 +290,26 @@ ajax '/suche/:s' => sub {
 	}
 };
 
+post '/kategorien' => sub {
+	# Insert into database
+	if (params->{neu_kategorie}) {
+		my $sth = database->prepare('INSERT INTO kategorien (name) VALUES (?)');
+		$sth->execute(params->{neu_kategorie});
+	}
+	redirect '/kategorien';
+};
 
 get '/kategorien' => sub {
+	my $sth = database->prepare('SELECT id, name FROM kategorien');
+	$sth->execute();
+	my $db_result = $sth->fetchall_hashref('id');
 	# show all kategorien
 	# (maybe all suchbegriffe?)
 	# form to add new Kategorie
+	debug($db_result);
+	template 'kategorien', {
+		kategorien => $db_result,
+	}
 };
 
 get '/kategorien/ohne' => sub {
@@ -292,9 +317,55 @@ get '/kategorien/ohne' => sub {
 	# add field to add another Suchbegriff to a Kategorie
 };
 
+post '/kategorien/:kategorie_id' => sub {
+	# Insert into database
+	if (params->{suchbegriff}) {
+		my $sth = database->prepare('INSERT INTO kategorien_suchbegriffe (kategorien_id, suchbegriff) VALUES (?, ?)');
+		$sth->execute(params->{kategorie_id}, params->{suchbegriff});
+	}
+	redirect '/kategorien/'.params->{kategorie_id};
+};
+
 get '/kategorien/:kategorie_id' => sub {
 	# show suchbegriffe
+	my $sth = database->prepare('SELECT id, name FROM kategorien WHERE id = ?');
+	$sth->execute(params->{kategorie_id});
+	my $kategorie = $sth->fetchrow_hashref();
+	
+	$sth = database->prepare('SELECT id, suchbegriff FROM kategorien_suchbegriffe WHERE kategorien_id = ?');
+	$sth->execute($kategorie->{id});
+
+	my $db_result = $sth->fetchall_hashref('id');
+	
+	
+	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
+	    FROM drucksachen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
+
+	my $init_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link, urheber_partei
+	    FROM initiativen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
+	
+	my $result;
+	
+	for my $id (keys %$db_result) {
+		$ds_sth->execute(TranslateSuchbegriff($db_result->{$id}->{suchbegriff}));
+		$init_sth->execute(TranslateSuchbegriff($db_result->{$id}->{suchbegriff}));
+		
+		my $ds_res = $ds_sth->fetchall_arrayref({});
+		my $init_res = $init_sth->fetchall_arrayref({});
+		
+		$db_result->{$id}->{initiativen} = $init_res;
+		$db_result->{$id}->{drucksachen} = $ds_res;
+	}
+
+	debug($db_result);
+
 	# show matching kleine Anfragen
+	template 'kategorie', {
+		name => $kategorie->{name},
+		suchbegriffe => $db_result,
+	}
 };
 
 

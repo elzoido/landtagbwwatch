@@ -1,9 +1,22 @@
-<h1>Suche</h1>
+<h1>Kategorie "<% name %>"</h1>
 
-<form action="/suche" method="post">
-<p>Suchbegriff: <input type="text" id="suchbegriff" name="s" length=30 value="<% suchbegriff %>"/><input type="submit" /></p>
+<h2>Suchbegriffe:</h2>
+
+<% IF suchbegriffe.size %>
+<ul>
+	<% FOREACH id IN suchbegriffe.keys %>
+	<li><% suchbegriffe.$id.suchbegriff %> (<% suchbegriffe.$id.drucksachen.size %> Drucksachen, <% suchbegriffe.$id.initiativen.size %> Initiativen)</a></li>
+	<% END %>
+</ul>
+<% END %>
+
+<form method="post">
+
+<p>Neuen Suchbegriff hinzufügen: <input id="suchbegriff" type="text" name="suchbegriff" size="40" /> <input type="submit" /></p>
+
 </form>
-
+<div class="suchtreffer">
+<h2>Suchtreffer</h2>
 <h3>Drucksachen</h3>
 
 <div class="drucksachen_ergebnis">
@@ -68,6 +81,8 @@
 	
 </div>
 
+</div>
+
 <script>
 
 var inittable;
@@ -112,6 +127,8 @@ function dataSrcInit( json ) {
 
 
 $(document).ready( function () {
+	$('.suchtreffer').hide();
+
 	dstable = $('#drucksachen').DataTable( {
 		"order": [[ 1, 'desc' ], [ 0, 'asc' ]],
 		"searching": false,
@@ -137,6 +154,11 @@ $(document).ready( function () {
 	});
 
 	$('#suchbegriff').keyup(function() {
+		if ($('#suchbegriff').val()) {
+			$('.suchtreffer').show();
+		} else {
+			$('.suchtreffer').hide();
+		}
 		dstable.ajax.reload();
 		inittable.ajax.reload();
 	});
@@ -145,3 +167,4 @@ $(document).ready( function () {
 
 
 </script>
+

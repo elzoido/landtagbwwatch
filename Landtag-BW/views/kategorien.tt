@@ -1,0 +1,15 @@
+<h1>Alle Kategorien</h1>
+
+<% IF kategorien.size %>
+<ul>
+	<% FOREACH id IN kategorien.keys %>
+	<li><a href="/kategorien/<% id %>"><% kategorien.$id.name %></a></li>
+	<% END %>
+</ul>
+<% END %>
+
+<form method="post">
+
+<p>Neue Kategorie hinzufügen: <input type="text" name="neu_kategorie" size="40" /> <input type="submit" /></p>
+
+</form>
