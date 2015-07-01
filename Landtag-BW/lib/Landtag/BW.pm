@@ -138,8 +138,7 @@ get '/initiative/:periode/:periode_id' => sub {
 	$sth->execute(params->{periode}, params->{periode_id});
 	my $result = $sth->fetchrow_hashref();
 	
-	my $sth_kat = database->prepare('SELECT kategorien.name AS kategorie, ');
-	kategorien_suchbegriffe
+	#my $sth_kat = database->prepare('SELECT kategorien.name AS kategorie, ');
 	
 	template 'initiative', {
 		doc => $result,
@@ -156,52 +155,27 @@ get '/drucksache/:periode/:periode_id' => sub {
 	};
 };
 
-sub MatchString {
-	my ($title, $match) = (shift, shift);
-	
-	return 0 unless ($match);
-	
-	my $stopwords_found = 0;
-	my $pluswords_found = 0;
-	my $pluswords = 0;
-	my $matching = 0;
-	
-	for my $word (split/\s+/,$match) {
-		if ($word =~ /^-/) {
-			#negative matching
-			$word =~ s/^-//;
-			if ($title =~ /$match/i) {
-				$stopwords_found++;
-			}
-		} elsif ($word =~ /^+/) {
-			#force matching
-			$pluswords++;
-			$word =~ s/^+//;
-			if ($title =~ /$match/i) {
-				$pluswords_found++;
-			}
-		} else {
-			#positive matching
-			if ($title =~ /$match/i) {
-				$matching++;
-			}
-		}
-	}
-	
-	if ($stopwords_found) {
-		return 0;
-	} elsif ($pluswords) {
-		if ($pluswords == $pluswords_found) {
-			return 1;
-		} else {
-			return 0;
-		}
-	} elsif ($matching) {
-		return 1;
+ajax '/suche' => sub {
+	my $search = params->{s};
+	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
+	    FROM drucksachen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
+
+	my $init_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link, urheber_partei
+	    FROM initiativen
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
+
+
+	if (length($search) > 3) {
+		$ds_sth->execute($search);
+		$init_sth->execute($search);
+		my $ds_result = $ds_sth->fetchall_hashref('id');
+		my $init_result = $init_sth->fetchall_hashref('id');
+		return to_json( {ds => $ds_result, init => $init_result});
 	} else {
-		return 0;
+		return to_json( {ds => {}, init => {}} );
 	}
-}
+};
 
 get '/kategorien' => sub {
 	# show all kategorien
@@ -212,12 +186,12 @@ get '/kategorien' => sub {
 get '/kategorien/ohne' => sub {
 	# show all kleine Anfragen without Kategorie
 	# add field to add another Suchbegriff to a Kategorie
-}
+};
 
 get '/kategorien/:kategorie_id' => sub {
 	# show suchbegriffe
 	# show matching kleine Anfragen
-}
+};
 
 
 
