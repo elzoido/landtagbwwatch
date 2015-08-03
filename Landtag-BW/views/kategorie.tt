@@ -1,6 +1,6 @@
 <h1>Kategorie "<% name %>"</h1>
 
-<a href="..">Zurück</a><br />
+<a href="../">Zurück</a><br />
 
 <% IF neu %>
 
