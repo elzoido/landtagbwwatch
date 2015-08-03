@@ -363,7 +363,7 @@ get '/kategorien/:kategorie_id' => sub {
 #		$result->{$id}->{drucksachen} = $ds_res;
 	}
 
-	debug($result);
+	debug($ds_result);
 
 	# show matching kleine Anfragen
 	template 'kategorie', {
