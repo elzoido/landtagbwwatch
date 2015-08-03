@@ -133,14 +133,14 @@ function dataSrcInit( json ) {
 
 $(document).ready( function () {
 
-<% IF edit %>
+<% IF neu %>
 	$('.suchtreffer').hide();
 <% END %>
 
 	dstable = $('#drucksachen').DataTable( {
 		"order": [[ 1, 'desc' ], [ 0, 'asc' ]],
 		"searching": false,
-<% IF edit %>
+<% IF neu %>
 		"ajax" : {
 			"url": "/suche/drucksachen",
 			"dataSrc": dataSrcDs,
@@ -154,7 +154,7 @@ $(document).ready( function () {
 	inittable = $('#initiativen').DataTable( {
 		"order": [[ 1, 'desc' ], [ 0, 'asc' ]],
 		"searching": false,
-<% IF edit %>
+<% IF neu %>
 		"ajax" : {
 			"url": "/suche/initiativen",
 			"dataSrc": dataSrcInit,
@@ -165,7 +165,7 @@ $(document).ready( function () {
 <% END %>
 	});
 
-<% IF edit %>
+<% IF neu %>
 	$('#suchbegriff').keyup(function() {
 		if ($('#suchbegriff').val()) {
 			$('.suchtreffer').show();

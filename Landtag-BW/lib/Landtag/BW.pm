@@ -421,7 +421,6 @@ get '/kategorien/:kategorie_id/neu' => sub {
 		suchbegriffe => $db_result,
 		ds => $ds_result,
 		init => $init_result,
-		neu => 1,
 	}
 };
 
