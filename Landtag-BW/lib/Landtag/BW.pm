@@ -444,6 +444,26 @@ get '/mdl' => sub {
 };
 
 get '/mdl/:partei' => sub {
+	# Liste aller MdL
+	my $partei = params->{'partei'};
+	my $partei_lesbar = $partei;
+	$partei_lesbar =~ s!_!/!;
+	my $sth = database->prepare('SELECT id, vorname, name, wahlkreis, aktiv FROM mdl WHERE partei = ?');
+	$sth->execute($partei_lesbar);
+	my $mdl_hash = $sth->fetchall_hashref('id');
+	
+	my $result;
+	for my $id (keys %$mdl_hash) {
+		push(@$result, {url => '/mdl/'.$partei.'/'.lc($mdl_hash->{$id}->{vorname}.$mdl_hash->{$id}->{name}.$mdl_hash->{$id}->{wahlkreis}),
+						name => $mdl_hash->{$id}->{name}.', '.$mdl_hash->{$id}->{vorname}.' (WK '.$mdl_hash->{id}->{wahlkreis}.($mdl_hash->{$id}->{aktiv} ? ')' : ', inaktiv)')
+					});
+	}
+	
+	template 'liste', {
+		titel => 'Liste der MDL der Fraktion \'' . $partei_lesbar.'\'',
+		liste => $result,
+		zurueck_url => '/mdl',
+	}
 };
 
 get '/mdl/:partei/:name' => sub {
