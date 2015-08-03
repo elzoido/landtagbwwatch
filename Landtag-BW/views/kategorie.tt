@@ -132,11 +132,15 @@ function dataSrcInit( json ) {
 
 
 $(document).ready( function () {
+
+<% IF edit %>
 	$('.suchtreffer').hide();
+<% END %>
 
 	dstable = $('#drucksachen').DataTable( {
 		"order": [[ 1, 'desc' ], [ 0, 'asc' ]],
 		"searching": false,
+<% IF edit %>
 		"ajax" : {
 			"url": "/suche/drucksachen",
 			"dataSrc": dataSrcDs,
@@ -144,11 +148,13 @@ $(document).ready( function () {
 				d.s = $('#suchbegriff').val()
 			}
 		}
+<% END %>
 	});
 
 	inittable = $('#initiativen').DataTable( {
 		"order": [[ 1, 'desc' ], [ 0, 'asc' ]],
 		"searching": false,
+<% IF edit %>
 		"ajax" : {
 			"url": "/suche/initiativen",
 			"dataSrc": dataSrcInit,
@@ -156,8 +162,10 @@ $(document).ready( function () {
 				d.s = $('#suchbegriff').val();
 			}
 		}
+<% END %>
 	});
 
+<% IF edit %>
 	$('#suchbegriff').keyup(function() {
 		if ($('#suchbegriff').val()) {
 			$('.suchtreffer').show();
@@ -167,6 +175,7 @@ $(document).ready( function () {
 		dstable.ajax.reload();
 		inittable.ajax.reload();
 	});
+<% END %>
 } );
 
 
