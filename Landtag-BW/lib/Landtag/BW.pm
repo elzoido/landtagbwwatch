@@ -355,16 +355,16 @@ get '/kategorien/:kategorie_id' => sub {
 		my $ds_res = $ds_sth->fetchall_arrayref({});
 		my $init_res = $init_sth->fetchall_arrayref({});
 		
-		$db_result->{$id}->{initiativen} = $init_res;
-		$db_result->{$id}->{drucksachen} = $ds_res;
+		$result->{$id}->{initiativen} = $init_res;
+		$result->{$id}->{drucksachen} = $ds_res;
 	}
 
-	debug($db_result);
+	debug($result);
 
 	# show matching kleine Anfragen
 	template 'kategorie', {
 		name => $kategorie->{name},
-		suchbegriffe => $db_result,
+		suchbegriffe => $result,
 		neu => 1,
 	}
 };
