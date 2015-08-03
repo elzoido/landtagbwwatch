@@ -1,5 +1,7 @@
 <h1>Kategorie "<% name %>"</h1>
 
+<% IF neu %>
+
 <h2>Suchbegriffe:</h2>
 
 <% IF suchbegriffe.size %>
@@ -15,6 +17,9 @@
 <p>Neuen Suchbegriff hinzufügen: <input id="suchbegriff" type="text" name="suchbegriff" size="40" /> <input type="submit" /></p>
 
 </form>
+
+<% END %>
+
 <div class="suchtreffer">
 <h2>Suchtreffer</h2>
 <h3>Drucksachen</h3>
