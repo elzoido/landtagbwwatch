@@ -35,14 +35,14 @@
 			</tr>
 		</thead>
 		<tbody>
-	<% FOREACH doc IN ds %>
+	<% FOREACH id IN ds.keys %>
 			<tr>
-				<td><% doc.periode %>/<% doc.periode_id %></td>
-				<td><% doc.datum %></td>
-				<td><% doc.titel %></td>
+				<td><% doc.$id.periode %>/<% doc.$id.periode_id %></td>
+				<td><% doc.$id.datum %></td>
+				<td><% doc.$id.titel %></td>
 				<td>
-					<a href="<% doc.link %>">Landtags-PDF</a><br />
-					<a href="/drucksache/<% doc.periode %>/<% doc.periode_id %>">Textversion</a>
+					<a href="<% doc.$id.link %>">Landtags-PDF</a><br />
+					<a href="/drucksache/<% doc.$id.periode %>/<% doc.$id.periode_id %>">Textversion</a>
 				</td>
 			</tr>
 	<% END %>
@@ -65,18 +65,18 @@
 			</tr>
 		</thead>
 		<tbody>
-		<% FOREACH doc IN init %>
+		<% FOREACH id IN init.keys %>
 			<tr>
-				<td><% doc.periode %>/<% doc.periode_id %></td>
-				<td><% doc.datum %></td>
-				<td><% doc.titel %></td>
-				<td><% IF doc.art == 'kleine_anfrage' %>Kleine Anfrage<% ELSIF doc.art == 'antrag' %>Antrag<% ELSE %>Große Anfrage<% END %></td>
-				<td><% IF doc.urheber_partei == 'FDP_DVP' %>FDP/DVP<% ELSE %><% doc.urheber_partei %><% END %></td>
+				<td><% init.$id.periode %>/<% init.$id.periode_id %></td>
+				<td><% init.$id.datum %></td>
+				<td><% init.$id.titel %></td>
+				<td><% IF init.$id.art == 'kleine_anfrage' %>Kleine Anfrage<% ELSIF init.$id.art == 'antrag' %>Antrag<% ELSE %>Große Anfrage<% END %></td>
+				<td><% IF init.$id.urheber_partei == 'FDP_DVP' %>FDP/DVP<% ELSE %><% init.$id.urheber_partei %><% END %></td>
 				<td>
-					<a href="<% doc.link %>">Landtags-PDF</a><br />
-					<a href="/initiative/<% doc.periode %>/<% doc.periode_id %>">Textversion</a>
-					<% IF doc.antwort == 1 %>
-					<br /><a href="/drucksache/<% doc.periode %>/<% doc.periode_id %>">Antwort</a>
+					<a href="<% init.$id.link %>">Landtags-PDF</a><br />
+					<a href="/initiative/<% init.$id.periode %>/<% init.$id.periode_id %>">Textversion</a>
+					<% IF init.$id.antwort == 1 %>
+					<br /><a href="/drucksache/<% init.$id.periode %>/<% init.$id.periode_id %>">Antwort</a>
 					<% END %>
 				</td>
 			</tr>
