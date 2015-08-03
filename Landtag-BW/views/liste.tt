@@ -1,0 +1,13 @@
+<h1><% titel %></h1>
+
+<% IF zurueck_url %>
+<a href="<% zurueck_url %> ">Zurück</a>
+<% END %>
+
+<% IF liste.size %>
+<ul>
+	<% FOREACH eintrag IN liste %>
+		<li><a href="<% eintrag.url %>"><% eintrag.name %></a></li>
+	<% END %>
+</ul>
+<% END %>
