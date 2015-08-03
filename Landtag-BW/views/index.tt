@@ -8,6 +8,8 @@
 			<li><a href="/initiativen/grosse_anfragen">große Anfragen</a></li>
 		</ul>
 	</li>
+	<li><a href="/kategorien">Liste der Kategorien</a></li>
+	<li><a href="/mdl">Liste aller Parteien -> MDL -> Anfragen</a></li>
 	<li><a href="/drucksachen">Drucksachen</a></li>
 	<li><a href="/karte">Karte</a></li>
 </ul>
