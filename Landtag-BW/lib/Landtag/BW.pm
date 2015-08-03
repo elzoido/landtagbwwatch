@@ -424,8 +424,8 @@ get '/kategorien/:kategorie_id/neu' => sub {
 		$ds_result = {%$ds_result, %$ds_res};
 		$init_result = {%$init_result, %$init_res};
 		
-		$result->{$id}->{initiativen} = scalar keys %$init_res;
-		$result->{$id}->{drucksachen} = scalar keys %$ds_res;
+		$db_result->{$id}->{initiativen} = scalar keys %$init_res;
+		$db_result->{$id}->{drucksachen} = scalar keys %$ds_res;
 	}
 
 #	debug($ds_result);
