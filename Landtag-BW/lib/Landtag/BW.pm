@@ -433,7 +433,7 @@ get '/kategorien/:kategorie_id/neu' => sub {
 	# show matching kleine Anfragen
 	template 'kategorie', {
 		name => $kategorie->{name},
-		kategorie_id => params->{kategorie_id}
+		kategorie_id => params->{kategorie_id},
 		suchbegriffe => $db_result,
 		ds => $ds_result,
 		init => $init_result,
