@@ -2,6 +2,8 @@
 
 <% IF neu %>
 
+<a href="/kategorien/<% kategorie_id %>">Zurück</a>
+
 <h2>Suchbegriffe:</h2>
 
 <% IF suchbegriffe.size %>
