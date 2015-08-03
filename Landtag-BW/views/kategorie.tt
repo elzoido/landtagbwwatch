@@ -1,8 +1,8 @@
 <h1>Kategorie "<% name %>"</h1>
 
-<a href="../">Zurück</a><br />
-
 <% IF neu %>
+
+<a href="/kategorien/<% kategorie_id %>">Zurück</a><br />
 
 <h2>Suchbegriffe:</h2>
 
@@ -21,6 +21,7 @@
 </form>
 
 <% ELSE %>
+<a href="/kategorien">Zurück</a><br />
 <a href="/kategorien/<% kategorie_id %>/neu">Neuen Suchbegriff hinzufügen</a>
 <% END %>
 
