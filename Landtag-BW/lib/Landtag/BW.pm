@@ -454,7 +454,7 @@ get '/mdl/:partei' => sub {
 	
 	my $result;
 	for my $id (sort {$mdl_hash->{$a}->{name} cmp $mdl_hash->{$b}->{name} or $mdl_hash->{$a}->{vorname} cmp $mdl_hash->{$b}->{vorname}} keys %$mdl_hash) {
-		push(@$result, {url => '/mdl/'.$partei.'/'.lc($id.'_'.$mdl_hash->{$id}->{vorname}.$mdl_hash->{$id}->{name}.$mdl_hash->{$id}->{wahlkreis}),
+		push(@$result, {url => '/mdl/'.$partei.'/'.lc($id.'_'.$mdl_hash->{$id}->{vorname}.$mdl_hash->{$id}->{name}),
 						name => $mdl_hash->{$id}->{name}.', '.$mdl_hash->{$id}->{vorname}.' (WK '.$mdl_hash->{$id}->{wahlkreis}.($mdl_hash->{$id}->{aktiv} ? ')' : ', inaktiv)')
 					});
 	}
@@ -467,6 +467,44 @@ get '/mdl/:partei' => sub {
 };
 
 get '/mdl/:partei/:name' => sub {
+	# Liste aller Initiativen (+ Antwort)
+	# Nur die Zahl am Anfang wird ausgewertet als Mysql-id
+	my $sth = database->prepare('SELECT initiativen.id AS id, initiativen.periode AS periode, initiativen.periode_id AS periode_id, initiativen.link AS link, initiativen.datum AS datum, initiativen.titel AS titel, initiativen.urheber_partei AS urheber_partei, initiativen.art AS art FROM initiativen, mdl_initiativen WHERE initiativen.art = \'kleine_anfrage\' AND mdl_initiativen.initiativen_id = initiativen.id AND mdl_initiativen.mdl_id = ?');
+	my $mdl = params->{name};
+	my ($mdl_id) = ($mdl =~ /^(\d+)_/);
+    $sth->execute($mdl_id);
+    my $dbresult = $sth->fetchall_hashref('id');
+	my $result;
+
+	my $mdl_info = database->quick_select('mdl', {id => $mdl_id});
+
+	my $sth_2 = database->prepare('SELECT mdl.id AS mdl_id, mdl.vorname AS vorname, mdl.name AS name, mdl.partei AS partei, mdl.wahlkreis AS wahlkreis FROM mdl, mdl_initiativen WHERE mdl.id = mdl_initiativen.mdl_id AND mdl_initiativen.initiativen_id = ?');
+	my $sth_reply = database->prepare('SELECT id FROM drucksachen WHERE periode = ? AND periode_id = ?');
+	
+	for my $id (keys %$dbresult) {
+		$sth_2->execute($id);
+		my $mdl_result = $sth_2->fetchall_hashref('mdl_id');
+	
+		$sth_reply->execute($dbresult->{$id}->{periode}, $dbresult->{$id}->{periode_id});
+		my $antwort = 0;
+		$antwort = 1 if ($sth_reply->fetchrow_hashref());
+
+		push(@$result, {periode => $dbresult->{$id}->{periode},
+						periode_id => $dbresult->{$id}->{periode_id},
+						link => $dbresult->{$id}->{link},
+						datum => $dbresult->{$id}->{datum},
+						urheber_partei => $dbresult->{$id}->{urheber_partei},
+						mdl => $mdl_result,
+						art => $dbresult->{$id}->{art},
+						antwort => $antwort,
+						titel => $dbresult->{$id}->{titel}});
+	}
+	
+	template 'initiativen', {
+		titel => 'Kleine Anfragen von MDL '.$mdl_info->{name}.', '.$mdl_info->{vorname}.', ('.$mdl_info->{partei}.')',
+		ds => $result,
+	};
+
 };
 
 get '/mdl/:partei/:name/neu' => sub {
