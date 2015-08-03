@@ -1,8 +1,8 @@
 <h1>Kategorie "<% name %>"</h1>
 
-<% IF neu %>
-
 <a href="/kategorien/<% kategorie_id %>">Zurück</a>
+
+<% IF neu %>
 
 <h2>Suchbegriffe:</h2>
 
