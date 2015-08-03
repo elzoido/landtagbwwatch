@@ -386,7 +386,7 @@ get '/kategorien/:kategorie_id/neu' => sub {
 
 	my $db_result = $sth->fetchall_hashref('id');
 	
-	debug($db_result);
+	#debug($db_result);
 	
 	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
 	    FROM drucksachen
@@ -424,7 +424,33 @@ get '/kategorien/:kategorie_id/neu' => sub {
 	}
 };
 
+get '/mdl' => sub {
+	# Liste aller Parteien
+	my $sth = database->prepare('SELECT partei FROM mdl GROUP BY partei');
+	$sth->execute();
+	my $parteien_hash = $sth->fetchall_hashref('partei');
+	my $result;
+	for my $partei (keys %$parteien_hash) {
+		my $partei_lesbar = $partei;
+		$partei_lesbar =~ s!_!/!;
+		push(@$result, {url => '/mdl/'.$partei, name => $partei_lesbar});
+	}
 
+	template 'liste', {
+		titel => 'Liste der Parteien',
+		liste => $result,
+		zurueck_url => '/',
+	}
+};
+
+get '/mdl/:partei' => sub {
+};
+
+get '/mdl/:partei/:name' => sub {
+};
+
+get '/mdl/:partei/:name/neu' => sub {
+}
 
 get '/karte' => sub {
 	template 'karte';
