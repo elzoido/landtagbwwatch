@@ -290,14 +290,6 @@ ajax '/suche/:s' => sub {
 	}
 };
 
-post '/kategorien' => sub {
-	# Insert into database
-	if (params->{neu_kategorie}) {
-		my $sth = database->prepare('INSERT INTO kategorien (name) VALUES (?)');
-		$sth->execute(params->{neu_kategorie});
-	}
-	redirect '/kategorien';
-};
 
 get '/kategorien' => sub {
 	my $sth = database->prepare('SELECT id, name FROM kategorien');
@@ -306,24 +298,38 @@ get '/kategorien' => sub {
 	# show all kategorien
 	# (maybe all suchbegriffe?)
 	# form to add new Kategorie
-	debug($db_result);
+	#debug($db_result);
 	template 'kategorien', {
 		kategorien => $db_result,
+	}
+};
+
+post '/kategorien/neu' => sub {
+	# Insert into database
+	if (params->{neu_kategorie}) {
+		my $sth = database->prepare('INSERT INTO kategorien (name) VALUES (?)');
+		$sth->execute(params->{neu_kategorie});
+	}
+	redirect '/kategorien';
+};
+
+get '/kategorien/neu' => sub {
+	my $sth = database->prepare('SELECT id, name FROM kategorien');
+	$sth->execute();
+	my $db_result = $sth->fetchall_hashref('id');
+	# show all kategorien
+	# (maybe all suchbegriffe?)
+	# form to add new Kategorie
+	#debug($db_result);
+	template 'kategorien', {
+		kategorien => $db_result,
+		neu => 1,
 	}
 };
 
 get '/kategorien/ohne' => sub {
 	# show all kleine Anfragen without Kategorie
 	# add field to add another Suchbegriff to a Kategorie
-};
-
-post '/kategorien/:kategorie_id' => sub {
-	# Insert into database
-	if (params->{suchbegriff}) {
-		my $sth = database->prepare('INSERT INTO kategorien_suchbegriffe (kategorien_id, suchbegriff) VALUES (?, ?)');
-		$sth->execute(params->{kategorie_id}, params->{suchbegriff});
-	}
-	redirect '/kategorien/'.params->{kategorie_id};
 };
 
 get '/kategorien/:kategorie_id' => sub {
@@ -359,8 +365,6 @@ get '/kategorien/:kategorie_id' => sub {
 		$ds_result = {%$ds_result, %$ds_res};
 		$init_result = {%$init_result, %$init_res};
 		
-#		$result->{$id}->{initiativen} = $init_res;
-#		$result->{$id}->{drucksachen} = $ds_res;
 	}
 
 	debug($ds_result);
@@ -371,9 +375,20 @@ get '/kategorien/:kategorie_id' => sub {
 		suchbegriffe => $db_result,
 		ds => $ds_result,
 		init => $init_result,
-		neu => 1,
+		kategorie_id => params->{kategorie_id}
+#		neu => 1,
 	}
 };
+
+post '/kategorien/:kategorie_id/neu' => sub {
+	# Insert into database
+	if (params->{suchbegriff}) {
+		my $sth = database->prepare('INSERT INTO kategorien_suchbegriffe (kategorien_id, suchbegriff) VALUES (?, ?)');
+		$sth->execute(params->{kategorie_id}, params->{suchbegriff});
+	}
+	redirect '/kategorien/'.params->{kategorie_id};
+};
+
 
 get '/kategorien/:kategorie_id/neu' => sub {
 	# show suchbegriffe
@@ -390,11 +405,11 @@ get '/kategorien/:kategorie_id/neu' => sub {
 	
 	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
 	    FROM drucksachen
-		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE) AND DATEDIFF(NOW(), datum) <= 31');
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
 
 	my $init_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link, urheber_partei
 	    FROM initiativen
-		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE) AND DATEDIFF(NOW(), datum) <= 31');
+		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
 	
 	my $ds_result = {};
 	my $init_result = {};
@@ -418,9 +433,11 @@ get '/kategorien/:kategorie_id/neu' => sub {
 	# show matching kleine Anfragen
 	template 'kategorie', {
 		name => $kategorie->{name},
+		kategorie_id => params->{kategorie_id}
 		suchbegriffe => $db_result,
 		ds => $ds_result,
 		init => $init_result,
+		neu => 1,
 	}
 };
 
