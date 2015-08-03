@@ -1,8 +1,9 @@
 <h1>Alle Kategorien</h1>
 
 <% IF neu %>
-	<a href="/kategorien">Zurück</a>
+	<a href="/kategorien">Zurück</a><br />
 <% ELSE %>
+	<a href="/">Zurück</a><br />
 	<a href="/kategorien/neu">Neue Kategorie anlegen</a>
 <% END %>
 
