@@ -1,6 +1,6 @@
 <h1>Kategorie "<% name %>"</h1>
 
-<a href="/kategorien/<% kategorie_id %>">Zurück</a>
+<a href="..">Zurück</a><br />
 
 <% IF neu %>
 
