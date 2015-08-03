@@ -450,7 +450,7 @@ get '/mdl/:partei/:name' => sub {
 };
 
 get '/mdl/:partei/:name/neu' => sub {
-}
+};
 
 get '/karte' => sub {
 	template 'karte';
