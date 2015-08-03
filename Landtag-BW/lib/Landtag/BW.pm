@@ -395,25 +395,32 @@ get '/kategorien/:kategorie_id/neu' => sub {
 	    FROM initiativen
 		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE) AND DATEDIFF(NOW(), datum) <= 31');
 	
-	my $result;
+	my $ds_result = {};
+	my $init_result = {};
 	
 	for my $id (keys %$db_result) {
 		$ds_sth->execute(TranslateSuchbegriff($db_result->{$id}->{suchbegriff}));
 		$init_sth->execute(TranslateSuchbegriff($db_result->{$id}->{suchbegriff}));
 		
-		my $ds_res = $ds_sth->fetchall_arrayref({});
-		my $init_res = $init_sth->fetchall_arrayref({});
+		my $ds_res = $ds_sth->fetchall_hashref('id');
+		my $init_res = $init_sth->fetchall_hashref('id');
 		
-		$db_result->{$id}->{initiativen} = $init_res;
-		$db_result->{$id}->{drucksachen} = $ds_res;
+		$ds_result = {%$ds_result, %$ds_res};
+		$init_result = {%$init_result, %$init_res};
+		
+#		$result->{$id}->{initiativen} = $init_res;
+#		$result->{$id}->{drucksachen} = $ds_res;
 	}
 
-#	debug($db_result);
+	debug($ds_result);
 
 	# show matching kleine Anfragen
 	template 'kategorie', {
 		name => $kategorie->{name},
 		suchbegriffe => $db_result,
+		ds => $ds_result,
+		init => $init_result,
+		neu => 1,
 	}
 };
 
