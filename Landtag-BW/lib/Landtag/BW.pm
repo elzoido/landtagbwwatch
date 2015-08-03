@@ -346,8 +346,8 @@ get '/kategorien/:kategorie_id' => sub {
 	    FROM initiativen
 		WHERE MATCH(titel) AGAINST (? IN BOOLEAN MODE)');
 	
-	my $ds_result;
-	my $init_result;
+	my $ds_result = {};
+	my $init_result = {};
 	
 	for my $id (keys %$db_result) {
 		$ds_sth->execute(TranslateSuchbegriff($db_result->{$id}->{suchbegriff}));
