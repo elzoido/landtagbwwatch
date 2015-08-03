@@ -7,7 +7,7 @@
 <% IF suchbegriffe.size %>
 <ul>
 	<% FOREACH id IN suchbegriffe.keys %>
-	<li><% suchbegriffe.$id.suchbegriff %> (<% suchbegriffe.$id.drucksachen.size %> Drucksachen, <% suchbegriffe.$id.initiativen.size %> Initiativen)</a></li>
+	<li><% suchbegriffe.$id.suchbegriff %> (<% suchbegriffe.$id.drucksachen %> Drucksachen, <% suchbegriffe.$id.initiativen %> Initiativen)</a></li>
 	<% END %>
 </ul>
 <% END %>

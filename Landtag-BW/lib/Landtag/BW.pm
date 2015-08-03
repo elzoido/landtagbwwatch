@@ -367,7 +367,7 @@ get '/kategorien/:kategorie_id' => sub {
 		
 	}
 
-	debug($ds_result);
+#	debug($ds_result);
 
 	# show matching kleine Anfragen
 	template 'kategorie', {
@@ -424,11 +424,11 @@ get '/kategorien/:kategorie_id/neu' => sub {
 		$ds_result = {%$ds_result, %$ds_res};
 		$init_result = {%$init_result, %$init_res};
 		
-#		$result->{$id}->{initiativen} = $init_res;
-#		$result->{$id}->{drucksachen} = $ds_res;
+		$result->{$id}->{initiativen} = scalar keys %$init_res;
+		$result->{$id}->{drucksachen} = scalar keys %$ds_res;
 	}
 
-	debug($ds_result);
+#	debug($ds_result);
 
 	# show matching kleine Anfragen
 	template 'kategorie', {
