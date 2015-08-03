@@ -19,7 +19,7 @@
 </form>
 
 <% ELSE %>
-<a href="/kategorie/<% kategorie_id %>/neu">Neuen Suchbegriff hinzufügen</a>
+<a href="/kategorien/<% kategorie_id %>/neu">Neuen Suchbegriff hinzufügen</a>
 <% END %>
 
 <div class="suchtreffer">
