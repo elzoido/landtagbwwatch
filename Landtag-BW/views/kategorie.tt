@@ -37,12 +37,12 @@
 		<tbody>
 	<% FOREACH id IN ds.keys %>
 			<tr>
-				<td><% doc.$id.periode %>/<% doc.$id.periode_id %></td>
-				<td><% doc.$id.datum %></td>
-				<td><% doc.$id.titel %></td>
+				<td><% ds.$id.periode %>/<% ds.$id.periode_id %></td>
+				<td><% ds.$id.datum %></td>
+				<td><% ds.$id.titel %></td>
 				<td>
-					<a href="<% doc.$id.link %>">Landtags-PDF</a><br />
-					<a href="/drucksache/<% doc.$id.periode %>/<% doc.$id.periode_id %>">Textversion</a>
+					<a href="<% ds.$id.link %>">Landtags-PDF</a><br />
+					<a href="/drucksache/<% ds.$id.periode %>/<% ds.$id.periode_id %>">Textversion</a>
 				</td>
 			</tr>
 	<% END %>
