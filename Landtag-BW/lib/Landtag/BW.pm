@@ -432,7 +432,7 @@ get '/mdl' => sub {
 	my $result;
 	for my $partei (keys %$parteien_hash) {
 		my $partei_lesbar = $partei;
-		$partei_lesbar =~ s!_!/!;
+		$partei =~ s!/!_!;
 		push(@$result, {url => '/mdl/'.$partei, name => $partei_lesbar});
 	}
 
