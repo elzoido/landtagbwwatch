@@ -354,7 +354,7 @@ get '/kategorien/:kategorie_id' => sub {
 		$init_sth->execute(TranslateSuchbegriff($db_result->{$id}->{suchbegriff}));
 		
 		my $ds_res = $ds_sth->fetchall_hashref('id');
-		my $init_res = $init_sth->fetchall_hashrefref('id');
+		my $init_res = $init_sth->fetchall_hashref('id');
 		
 		$ds_result = {%$ds_result, %$ds_res};
 		$init_result = {%$init_result, %$init_res};
