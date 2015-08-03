@@ -386,6 +386,7 @@ get '/kategorien/:kategorie_id/neu' => sub {
 
 	my $db_result = $sth->fetchall_hashref('id');
 	
+	debug($db_result);
 	
 	my $ds_sth = database->prepare('SELECT id, periode, periode_id, titel, datum, link
 	    FROM drucksachen
