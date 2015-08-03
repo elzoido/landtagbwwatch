@@ -453,9 +453,9 @@ get '/mdl/:partei' => sub {
 	my $mdl_hash = $sth->fetchall_hashref('id');
 	
 	my $result;
-	for my $id (keys %$mdl_hash) {
+	for my $id (sort {$mdl_hash->{$a}->{name} cmp $mdl_hash->{$b}->{name} or $mdl_hash->{$a}->{vorname} cmp $mdl_hash->{$b}->{vorname}} keys %$mdl_hash) {
 		push(@$result, {url => '/mdl/'.$partei.'/'.lc($mdl_hash->{$id}->{vorname}.$mdl_hash->{$id}->{name}.$mdl_hash->{$id}->{wahlkreis}),
-						name => $mdl_hash->{$id}->{name}.', '.$mdl_hash->{$id}->{vorname}.' (WK '.$mdl_hash->{id}->{wahlkreis}.($mdl_hash->{$id}->{aktiv} ? ')' : ', inaktiv)')
+						name => $mdl_hash->{$id}->{name}.', '.$mdl_hash->{$id}->{vorname}.' (WK '.$mdl_hash->{$id}->{wahlkreis}.($mdl_hash->{$id}->{aktiv} ? ')' : ', inaktiv)')
 					});
 	}
 	
